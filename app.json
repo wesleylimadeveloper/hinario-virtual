@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "hinario-virtual",
+    "slug": "hinario-virtual",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
