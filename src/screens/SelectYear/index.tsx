@@ -1,15 +1,19 @@
 import React, { useMemo, useState } from "react";
 import { useTheme } from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
 import { RadioButtonProps } from "react-native-radio-buttons-group";
 
-import { Container, Content, Title, Subtitle } from "./styles";
-import { NavigationFooter } from "../../components/NavigationFooter";
 import { RadioButtons } from "../../components/RadioButtons";
+import { NavigationFooter } from "../../components/NavigationFooter";
+
+import { Container, Content, Title, Subtitle } from "./styles";
 
 export function SelectYear() {
   const [selectedId, setSelectedId] = useState<string | undefined>();
 
   const THEME = useTheme();
+
+  const navigation = useNavigation();
 
   const radioButtons: RadioButtonProps[] = useMemo(
     () => [
@@ -49,7 +53,10 @@ export function SelectYear() {
           />
         </Content>
 
-        <NavigationFooter onPrevious={() => {}} onNext={() => {}} />
+        <NavigationFooter
+          onPrevious={() => navigation.goBack()}
+          onNext={() => {}}
+        />
       </Container>
     </>
   );

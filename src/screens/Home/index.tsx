@@ -2,9 +2,11 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
 
 import { PrimaryButton } from "../../components/Buttons/PrimaryButton";
 
+import { HomeNavigationProps } from "./types";
 import {
   Container,
   Header,
@@ -20,6 +22,8 @@ import {
 
 export function Home() {
   const THEME = useTheme();
+
+  const navigation = useNavigation<HomeNavigationProps>();
 
   return (
     <>
@@ -61,6 +65,7 @@ export function Home() {
         <ButtonWrapper>
           <PrimaryButton
             color={THEME.colors.primary_light}
+            onPress={() => navigation.navigate("SelectYear")}
             title="COMECE JÁ!"
           />
         </ButtonWrapper>

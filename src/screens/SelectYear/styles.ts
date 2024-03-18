@@ -8,7 +8,7 @@ export const Container = styled.View`
 
 export const Content = styled.View`
   flex: 1;
-  margin-top: ${RFValue(64)}px;
+  margin-top: ${RFValue(96)}px;
   padding: 0 ${RFValue(42)}px;
 `;
 
