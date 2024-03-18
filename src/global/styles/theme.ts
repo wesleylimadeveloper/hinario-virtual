@@ -17,8 +17,8 @@ export default {
     success: "#0FB746",
   },
   fonts: {
-    title: "Roboto_700Bold",
-    text: "Roboto_400Regular",
+    bold: "Roboto_700Bold",
+    regular: "Roboto_400Regular",
   },
   fontSize: {
     smallest: RFValue(11),
