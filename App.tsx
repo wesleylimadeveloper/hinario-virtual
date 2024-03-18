@@ -9,6 +9,7 @@ import { ThemeProvider } from "styled-components/native";
 
 import THEME from "./src/global/styles/theme";
 import { Login } from "./src/screens/Login";
+import { Routes } from "./src/routes";
 
 export default function App() {
   let [fontsLoaded, fontError] = useFonts({
@@ -23,7 +24,7 @@ export default function App() {
   return (
     <ThemeProvider theme={THEME}>
       <StatusBar backgroundColor={THEME.colors.primary} />
-      <Login />
+      <Routes />
     </ThemeProvider>
   );
 }

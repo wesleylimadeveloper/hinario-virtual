@@ -1,4 +1,4 @@
-export type LoginNavigationProps = {
+export type RegisterNavigationProps = {
   navigate(screen: string): void;
 };
 

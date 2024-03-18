@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { TextInput } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
+import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -9,7 +10,7 @@ import Input from "../../components/Input";
 import { LinkButton } from "../../components/Buttons/LinkButton";
 import { PrimaryButton } from "../../components/Buttons/PrimaryButton";
 
-import { FormData } from "./types";
+import { FormData, LoginNavigationProps } from "./types";
 import {
   Container,
   Title,
@@ -25,6 +26,8 @@ export function Login() {
   const [isLogginIn, setIsLoggingIn] = useState(false);
 
   const passwordInputRef = useRef<TextInput>();
+
+  const navigation = useNavigation<LoginNavigationProps>();
 
   const schema = yup.object().shape({
     email: yup
@@ -129,7 +132,11 @@ export function Login() {
 
       <Footer>
         <Text>ou</Text>
-        <LinkButton disabled={isLogginIn} title="CADASTRE-SE AQUI" />
+        <LinkButton
+          disabled={isLogginIn}
+          onPress={() => navigation.navigate("Register")}
+          title="CADASTRE-SE AQUI"
+        />
       </Footer>
     </Container>
   );

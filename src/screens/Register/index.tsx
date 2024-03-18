@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { TextInput } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
+import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -9,7 +10,7 @@ import Input from "../../components/Input";
 import { PrimaryButton } from "../../components/Buttons/PrimaryButton";
 import { LinkButton } from "../../components/Buttons/LinkButton";
 
-import { FormData } from "./types";
+import { FormData, RegisterNavigationProps } from "./types";
 import {
   Scroll,
   Container,
@@ -28,6 +29,8 @@ export function Register() {
   const passwordInputRef = useRef<TextInput>();
   const confirmPasswordInputRef = useRef<TextInput>();
   const parishCodeInputRef = useRef<TextInput>();
+
+  const navigation = useNavigation<RegisterNavigationProps>();
 
   const schema = yup.object().shape({
     fullName: yup.string().trim().required("Nome completo obrigatório."),
@@ -211,7 +214,11 @@ export function Register() {
         </Form>
 
         <LinkButtonWrapper>
-          <LinkButton disabled={isRegistering} title="JÁ TENHO UMA CONTA" />
+          <LinkButton
+            disabled={isRegistering}
+            onPress={() => navigation.navigate("Login")}
+            title="JÁ TENHO UMA CONTA"
+          />
         </LinkButtonWrapper>
       </Container>
     </Scroll>
