@@ -7,6 +7,7 @@ import { Container, Text } from "./styles";
 
 export function PrimaryButton({
   title = "",
+  color,
   disable,
   inactive,
   ...rest
@@ -14,7 +15,7 @@ export function PrimaryButton({
   const THEME = useTheme();
 
   return (
-    <Container activeOpacity={0.7} disabled={disable} {...rest}>
+    <Container activeOpacity={0.7} color={color} disabled={disable} {...rest}>
       {inactive ? (
         <ActivityIndicator color={THEME.colors.light} />
       ) : (

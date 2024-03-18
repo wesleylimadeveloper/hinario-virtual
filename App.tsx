@@ -5,16 +5,17 @@ import {
   Roboto_400Regular,
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
+import { WindSong_500Medium } from "@expo-google-fonts/windsong";
 import { ThemeProvider } from "styled-components/native";
 
 import THEME from "./src/global/styles/theme";
-import { Login } from "./src/screens/Login";
 import { Routes } from "./src/routes";
 
 export default function App() {
   let [fontsLoaded, fontError] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold,
+    WindSong_500Medium,
   });
 
   if (!fontsLoaded && !fontError) {

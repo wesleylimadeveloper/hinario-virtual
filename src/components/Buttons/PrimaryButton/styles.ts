@@ -1,8 +1,11 @@
 import styled from "styled-components/native";
 
-export const Container = styled.TouchableOpacity`
+import { ButtonProps } from "../types";
+
+export const Container = styled.TouchableOpacity<ButtonProps>`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme, color }) =>
+    color ? color : theme.colors.primary};
   border-color: ${({ theme }) => theme.colors.primary};
   border-radius: 8px;
   border-width: 1px;

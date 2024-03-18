@@ -1221,6 +1221,11 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto/-/roboto-0.2.3.tgz#c103422a3c8f461aaada33acaf06418f6650dc19"
   integrity sha512-PF6S//ZYWeXfpYTwvY2oEe0d5RnqwR5KMsGjuTgg6y9p/CPK/IkWL+wsbkzjfd+Jck1Q1pRlWOoe5uz42sQFRg==
 
+"@expo-google-fonts/windsong@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/windsong/-/windsong-0.2.3.tgz#1b02e394890621e9a71dbb19622535865ce87d45"
+  integrity sha512-fJPbZjZFxlYzAU4GZsmUUrRVcZPhnTVXGaVr9UiwSmgE08tegsS2hiRFvq8jM76zmrCogNNHP3C9W4ITF6x+Tg==
+
 "@expo/bunyan@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@expo/bunyan/-/bunyan-4.0.0.tgz#be0c1de943c7987a9fbd309ea0b1acd605890c7b"
