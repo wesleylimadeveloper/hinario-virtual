@@ -26,5 +26,6 @@ export default {
     normal: RFValue(14),
     larger: RFValue(18),
     largest: RFValue(22),
+    extraLarge: RFValue(26),
   },
 };
