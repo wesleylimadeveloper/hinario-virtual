@@ -9,7 +9,7 @@ export const Text = styled.Text`
   border-bottom-color: ${({ theme }) => theme.colors.primary};
   border-bottom-width: 1px;
   color: ${({ theme }) => theme.colors.primary};
-  font-family: ${({ theme }) => theme.fonts.text};
+  font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
   text-align: center;
 `;

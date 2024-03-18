@@ -11,6 +11,7 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.extraLarge}px;
   font-weight: bold;
   margin-top: ${RFValue(64)}px;
@@ -19,6 +20,7 @@ export const Title = styled.Text`
 
 export const Subtitle = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
+  font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
   margin-bottom: ${RFValue(32)}px;
   text-align: center;

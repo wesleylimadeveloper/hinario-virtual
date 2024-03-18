@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   field: {
     flex: 1,
-    fontFamily: THEME.fonts.text,
+    fontFamily: THEME.fonts.regular,
     fontSize: THEME.fontSize.normal,
   },
   eyeIcon: {

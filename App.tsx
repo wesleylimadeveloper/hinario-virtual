@@ -1,30 +1,29 @@
 import React from "react";
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { StatusBar } from "react-native";
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_700Bold,
+} from "@expo-google-fonts/roboto";
 import { ThemeProvider } from "styled-components/native";
 
 import THEME from "./src/global/styles/theme";
+import { Login } from "./src/screens/Login";
 
 export default function App() {
+  let [fontsLoaded, fontError] = useFonts({
+    Roboto_400Regular,
+    Roboto_700Bold,
+  });
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
+
   return (
     <ThemeProvider theme={THEME}>
-      <View style={styles.container}>
-        <StatusBar backgroundColor={THEME.colors.primary} />
-        <Text style={styles.text}>Hinário Virtual</Text>
-      </View>
+      <StatusBar backgroundColor={THEME.colors.primary} />
+      <Login />
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: THEME.colors.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    color: THEME.colors.light,
-    fontSize: THEME.fontSize.normal,
-    fontWeight: "bold",
-  },
-});

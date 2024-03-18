@@ -10,6 +10,7 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.extraLarge}px;
   font-weight: bold;
   text-align: center;
@@ -17,6 +18,7 @@ export const Title = styled.Text`
 
 export const Subtitle = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
+  font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
   margin-bottom: ${RFValue(32)}px;
   text-align: center;
@@ -40,6 +42,7 @@ export const Footer = styled.View`
 
 export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
+  font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
   text-align: center;
 `;
