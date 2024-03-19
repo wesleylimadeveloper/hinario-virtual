@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { RadioButtonProps } from "react-native-radio-buttons-group";
 
 import { RadioButtons } from "../../components/RadioButtons";
+import { radioButtonStyle } from "../../components/RadioButtons/styles";
 import { NavigationFooter } from "../../components/NavigationFooter";
 
 import { SelectCycleNavigationProps } from "./types";
@@ -20,27 +21,27 @@ export function SelectCycle() {
     () => [
       {
         id: "1",
-        color: THEME.colors.gray_light,
         label: "Ciclo do Natal",
         value: "1",
+        ...radioButtonStyle,
       },
       {
         id: "2",
-        color: THEME.colors.gray_light,
         label: "Ciclo Pascal",
         value: "2",
+        ...radioButtonStyle,
       },
       {
         id: "3",
-        color: THEME.colors.gray_light,
         label: "Tempo Comum (atual)",
         value: "2",
+        ...radioButtonStyle,
       },
       {
         id: "4",
-        color: THEME.colors.gray_light,
         label: "Solenidade",
         value: "4",
+        ...radioButtonStyle,
       },
     ],
     []

@@ -4,10 +4,11 @@ import { useNavigation } from "@react-navigation/native";
 import { RadioButtonProps } from "react-native-radio-buttons-group";
 
 import { RadioButtons } from "../../components/RadioButtons";
+import { radioButtonStyle } from "../../components/RadioButtons/styles";
 import { NavigationFooter } from "../../components/NavigationFooter";
 
-import { Container, Content, Title, Subtitle } from "./styles";
 import { SelectYearNavigationProps } from "./types";
+import { Container, Content, Title, Subtitle } from "./styles";
 
 export function SelectYear() {
   const [selectedId, setSelectedId] = useState<string | undefined>();
@@ -20,21 +21,23 @@ export function SelectYear() {
     () => [
       {
         id: "1",
-        color: THEME.colors.gray_light,
         label: "Ano A (atual)",
         value: "1",
+        ...radioButtonStyle,
       },
       {
         id: "2",
         color: THEME.colors.gray_light,
         label: "Ano B",
         value: "2",
+        ...radioButtonStyle,
       },
       {
         id: "3",
         color: THEME.colors.gray_light,
         label: "Ano C",
         value: "2",
+        ...radioButtonStyle,
       },
     ],
     []

@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { RadioButtonProps } from "react-native-radio-buttons-group";
 
 import { RadioButtons } from "../../components/RadioButtons";
+import { radioButtonStyle } from "../../components/RadioButtons/styles";
 import { NavigationFooter } from "../../components/NavigationFooter";
 
 import { SelectCelebrationNavigationProps } from "./types";
@@ -20,63 +21,63 @@ export function SelectCelebration() {
     () => [
       {
         id: "1",
-        color: THEME.colors.gray_light,
         label: "1º Domingo",
         value: "1",
+        ...radioButtonStyle,
       },
       {
         id: "2",
-        color: THEME.colors.gray_light,
         label: "2º Domingo",
         value: "2",
+        ...radioButtonStyle,
       },
       {
         id: "3",
-        color: THEME.colors.gray_light,
         label: "3º Domingo",
         value: "3",
+        ...radioButtonStyle,
       },
       {
         id: "5",
-        color: THEME.colors.gray_light,
         label: "5º Domingo",
         value: "5",
+        ...radioButtonStyle,
       },
       {
         id: "6",
-        color: THEME.colors.gray_light,
         label: "6º Domingo",
         value: "6",
+        ...radioButtonStyle,
       },
       {
         id: "7",
-        color: THEME.colors.gray_light,
         label: "7º Domingo",
         value: "7",
+        ...radioButtonStyle,
       },
       {
         id: "8",
-        color: THEME.colors.gray_light,
         label: "8º Domingo",
         value: "8",
+        ...radioButtonStyle,
       },
       {
         id: "9",
-        color: THEME.colors.gray_light,
         label: "9º Domingo",
         value: "9",
+        ...radioButtonStyle,
       },
       {
         id: "10",
-        color: THEME.colors.gray_light,
         label: "10º Domingo",
         value: "10",
+        ...radioButtonStyle,
       },
       {
         id: "11",
-        color: THEME.colors.gray_light,
         label: "11º Domingo",
         value: "11",
+        ...radioButtonStyle,
       },
     ],
     []
