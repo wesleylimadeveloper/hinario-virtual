@@ -22,11 +22,7 @@ export function NavigationFooter({
     <Container>
       <Buttons>
         <PreviousButton onPress={onPrevious}>
-          <Entypo
-            color={THEME.colors.gray_light}
-            name="chevron-left"
-            size={16}
-          />
+          <Entypo color={THEME.colors.gray} name="chevron-left" size={16} />
           <PreviousButtonText>voltar</PreviousButtonText>
         </PreviousButton>
 

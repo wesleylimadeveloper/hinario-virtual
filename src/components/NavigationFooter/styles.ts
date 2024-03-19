@@ -16,10 +16,12 @@ export const PreviousButton = styled.TouchableOpacity.attrs({
 })`
   align-items: center;
   flex-direction: row;
+  justify-content: center;
+  padding: 8px;
 `;
 
 export const PreviousButtonText = styled.Text`
-  color: ${({ theme }) => theme.colors.gray_light};
+  color: ${({ theme }) => theme.colors.gray};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
   margin-left: 6px;
@@ -30,6 +32,8 @@ export const NextButton = styled.TouchableOpacity.attrs({
 })`
   align-items: center;
   flex-direction: row;
+  justify-content: center;
+  padding: 8px;
 `;
 
 export const NextButtonText = styled.Text`
