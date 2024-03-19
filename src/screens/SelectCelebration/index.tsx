@@ -3,6 +3,7 @@ import { useTheme } from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
 import { RadioButtonProps } from "react-native-radio-buttons-group";
 
+import { Background } from "../../components/Background";
 import { RadioButtons } from "../../components/RadioButtons";
 import { radioButtonStyle } from "../../components/RadioButtons/styles";
 import { NavigationFooter } from "../../components/NavigationFooter";
@@ -86,21 +87,23 @@ export function SelectCelebration() {
   return (
     <>
       <Container>
-        <Content>
-          <Title>SELECIONE A CELEBRAÇÃO</Title>
-          <Subtitle>ANO LITÚRGICO</Subtitle>
+        <Background>
+          <Content>
+            <Title>SELECIONE A CELEBRAÇÃO</Title>
+            <Subtitle>ANO LITÚRGICO</Subtitle>
 
-          <RadioButtons
-            radioButtons={radioButtons}
-            onPress={setSelectedId}
-            selectedId={selectedId}
+            <RadioButtons
+              radioButtons={radioButtons}
+              onPress={setSelectedId}
+              selectedId={selectedId}
+            />
+          </Content>
+
+          <NavigationFooter
+            onPrevious={() => navigation.goBack()}
+            onNext={() => {}}
           />
-        </Content>
-
-        <NavigationFooter
-          onPrevious={() => navigation.goBack()}
-          onNext={() => {}}
-        />
+        </Background>
       </Container>
     </>
   );

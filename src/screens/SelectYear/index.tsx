@@ -3,6 +3,7 @@ import { useTheme } from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
 import { RadioButtonProps } from "react-native-radio-buttons-group";
 
+import { Background } from "../../components/Background";
 import { RadioButtons } from "../../components/RadioButtons";
 import { radioButtonStyle } from "../../components/RadioButtons/styles";
 import { NavigationFooter } from "../../components/NavigationFooter";
@@ -46,21 +47,23 @@ export function SelectYear() {
   return (
     <>
       <Container>
-        <Content>
-          <Title>SELECIONE O ANO</Title>
-          <Subtitle>ANO LITÚRGICO</Subtitle>
+        <Background>
+          <Content>
+            <Title>SELECIONE O ANO</Title>
+            <Subtitle>ANO LITÚRGICO</Subtitle>
 
-          <RadioButtons
-            radioButtons={radioButtons}
-            onPress={setSelectedId}
-            selectedId={selectedId}
+            <RadioButtons
+              radioButtons={radioButtons}
+              onPress={setSelectedId}
+              selectedId={selectedId}
+            />
+          </Content>
+
+          <NavigationFooter
+            onPrevious={() => navigation.goBack()}
+            onNext={() => navigation.navigate("SelectCycle")}
           />
-        </Content>
-
-        <NavigationFooter
-          onPrevious={() => navigation.goBack()}
-          onNext={() => navigation.navigate("SelectCycle")}
-        />
+        </Background>
       </Container>
     </>
   );
