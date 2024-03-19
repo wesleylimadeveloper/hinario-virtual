@@ -6,41 +6,77 @@ import { RadioButtonProps } from "react-native-radio-buttons-group";
 import { RadioButtons } from "../../components/RadioButtons";
 import { NavigationFooter } from "../../components/NavigationFooter";
 
-import { SelectCycleNavigationProps } from "./types";
+import { SelectCelebrationNavigationProps } from "./types";
 import { Container, Content, Title, Subtitle } from "./styles";
 
-export function SelectCycle() {
+export function SelectCelebration() {
   const [selectedId, setSelectedId] = useState<string | undefined>();
 
   const THEME = useTheme();
 
-  const navigation = useNavigation<SelectCycleNavigationProps>();
+  const navigation = useNavigation<SelectCelebrationNavigationProps>();
 
   const radioButtons: RadioButtonProps[] = useMemo(
     () => [
       {
         id: "1",
         color: THEME.colors.gray_light,
-        label: "Ciclo do Natal",
+        label: "1º Domingo",
         value: "1",
       },
       {
         id: "2",
         color: THEME.colors.gray_light,
-        label: "Ciclo Pascal",
+        label: "2º Domingo",
         value: "2",
       },
       {
         id: "3",
         color: THEME.colors.gray_light,
-        label: "Tempo Comum (atual)",
-        value: "2",
+        label: "3º Domingo",
+        value: "3",
       },
       {
-        id: "4",
+        id: "5",
         color: THEME.colors.gray_light,
-        label: "Solenidade",
-        value: "4",
+        label: "5º Domingo",
+        value: "5",
+      },
+      {
+        id: "6",
+        color: THEME.colors.gray_light,
+        label: "6º Domingo",
+        value: "6",
+      },
+      {
+        id: "7",
+        color: THEME.colors.gray_light,
+        label: "7º Domingo",
+        value: "7",
+      },
+      {
+        id: "8",
+        color: THEME.colors.gray_light,
+        label: "8º Domingo",
+        value: "8",
+      },
+      {
+        id: "9",
+        color: THEME.colors.gray_light,
+        label: "9º Domingo",
+        value: "9",
+      },
+      {
+        id: "10",
+        color: THEME.colors.gray_light,
+        label: "10º Domingo",
+        value: "10",
+      },
+      {
+        id: "11",
+        color: THEME.colors.gray_light,
+        label: "11º Domingo",
+        value: "11",
       },
     ],
     []
@@ -50,8 +86,8 @@ export function SelectCycle() {
     <>
       <Container>
         <Content>
-          <Title>SELECIONE O CICLO</Title>
-          <Subtitle>TEMPO LITÚRGICO</Subtitle>
+          <Title>SELECIONE A CELEBRAÇÃO</Title>
+          <Subtitle>ANO LITÚRGICO</Subtitle>
 
           <RadioButtons
             radioButtons={radioButtons}
@@ -62,7 +98,7 @@ export function SelectCycle() {
 
         <NavigationFooter
           onPrevious={() => navigation.goBack()}
-          onNext={() => navigation.navigate("SelectCelebration")}
+          onNext={() => {}}
         />
       </Container>
     </>
