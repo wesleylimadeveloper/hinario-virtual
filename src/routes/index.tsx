@@ -6,7 +6,7 @@ import { Dashboard } from "./dashboard";
 export function Routes() {
   return (
     <NavigationContainer>
-      <Dashboard />
+      <Auth />
     </NavigationContainer>
   );
 }

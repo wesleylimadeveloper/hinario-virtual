@@ -3,6 +3,7 @@ import { useTheme } from "styled-components/native";
 
 import { Home } from "../screens/Home";
 import { SelectYear } from "../screens/SelectYear";
+import { SelectCycle } from "../screens/SelectCycle";
 
 export function Dashboard() {
   const THEME = useTheme();
@@ -34,6 +35,14 @@ export function Dashboard() {
       <Screen
         component={SelectYear}
         name="SelectYear"
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Screen
+        component={SelectCycle}
+        name="SelectCycle"
         options={{
           headerShown: false,
         }}

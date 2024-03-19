@@ -7,34 +7,39 @@ import { RadioButtons } from "../../components/RadioButtons";
 import { NavigationFooter } from "../../components/NavigationFooter";
 
 import { Container, Content, Title, Subtitle } from "./styles";
-import { SelectYearNavigationProps } from "./types";
 
-export function SelectYear() {
+export function SelectCycle() {
   const [selectedId, setSelectedId] = useState<string | undefined>();
 
   const THEME = useTheme();
 
-  const navigation = useNavigation<SelectYearNavigationProps>();
+  const navigation = useNavigation();
 
   const radioButtons: RadioButtonProps[] = useMemo(
     () => [
       {
         id: "1",
         color: THEME.colors.gray_light,
-        label: "Ano A (atual)",
+        label: "Ciclo do Natal",
         value: "1",
       },
       {
         id: "2",
         color: THEME.colors.gray_light,
-        label: "Ano B",
+        label: "Ciclo Pascal",
         value: "2",
       },
       {
         id: "3",
         color: THEME.colors.gray_light,
-        label: "Ano C",
+        label: "Tempo Comum (atual)",
         value: "2",
+      },
+      {
+        id: "4",
+        color: THEME.colors.gray_light,
+        label: "Solenidade",
+        value: "4",
       },
     ],
     []
@@ -44,8 +49,8 @@ export function SelectYear() {
     <>
       <Container>
         <Content>
-          <Title>SELECIONE O ANO</Title>
-          <Subtitle>ANO LITÚRGICO</Subtitle>
+          <Title>SELECIONE O CICLO</Title>
+          <Subtitle>TEMPO LITÚRGICO</Subtitle>
 
           <RadioButtons
             radioButtons={radioButtons}
@@ -56,7 +61,7 @@ export function SelectYear() {
 
         <NavigationFooter
           onPrevious={() => navigation.goBack()}
-          onNext={() => navigation.navigate("SelectCycle")}
+          onNext={() => {}}
         />
       </Container>
     </>
