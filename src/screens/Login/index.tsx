@@ -119,7 +119,11 @@ export function Login() {
         </InputWrapper>
 
         <LinkButtonWrapper>
-          <LinkButton disabled={isLogginIn} title="Esqueci minha senha" />
+          <LinkButton
+            disabled={isLogginIn}
+            onPress={() => navigation.navigate("ForgotPassword")}
+            title="Esqueci minha senha"
+          />
         </LinkButtonWrapper>
 
         <PrimaryButton

@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useTheme } from "styled-components/native";
 
 import { Login } from "../screens/Login";
+import { ForgotPassword } from "../screens/ForgotPassword";
 import { Register } from "../screens/Register";
 
 export function Auth() {
@@ -26,6 +27,14 @@ export function Auth() {
       <Screen
         component={Login}
         name="Login"
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Screen
+        component={ForgotPassword}
+        name="ForgotPassword"
         options={{
           headerShown: false,
         }}
