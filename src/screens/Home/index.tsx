@@ -13,6 +13,7 @@ import {
   Pressable,
   Info,
   Content,
+  Logo,
   Title,
   Cursive,
   MessageWrapper,
@@ -24,6 +25,8 @@ export function Home() {
   const THEME = useTheme();
 
   const navigation = useNavigation<HomeNavigationProps>();
+
+  const dioceseImage = require("../../assets/diocese.png");
 
   return (
     <>
@@ -54,6 +57,8 @@ export function Home() {
         </Header>
 
         <Content>
+          <Logo resizeMode="contain" source={dioceseImage} />
+
           <Title>VENHA PLANEJAR A</Title>
           <Cursive>Celebração!</Cursive>
 

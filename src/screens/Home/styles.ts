@@ -28,6 +28,12 @@ export const Content = styled.View`
   padding: 0 ${RFValue(42)}px;
 `;
 
+export const Logo = styled.Image`
+  height: ${RFValue(128)}px;
+  margin-bottom: 36px;
+  width: 100%;
+`;
+
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.bold};
