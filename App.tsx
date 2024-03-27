@@ -3,10 +3,9 @@ import { StatusBar } from "react-native";
 import * as NavigationBar from "expo-navigation-bar";
 import {
   useFonts,
-  Roboto_400Regular,
-  Roboto_700Bold,
-} from "@expo-google-fonts/roboto";
-import { WindSong_500Medium } from "@expo-google-fonts/windsong";
+  Raleway_500Medium,
+  Raleway_800ExtraBold,
+} from "@expo-google-fonts/raleway";
 import { ThemeProvider } from "styled-components/native";
 
 import THEME from "./src/global/styles/theme";
@@ -16,9 +15,9 @@ export default function App() {
   NavigationBar.setBackgroundColorAsync(THEME.colors.primary);
 
   let [fontsLoaded, fontError] = useFonts({
-    Roboto_400Regular,
-    Roboto_700Bold,
-    WindSong_500Medium,
+    Carabella_Regular: require("./src/assets/fonts/CarabellaRegular.ttf"),
+    Raleway_500Medium,
+    Raleway_800ExtraBold,
   });
 
   if (!fontsLoaded && !fontError) {

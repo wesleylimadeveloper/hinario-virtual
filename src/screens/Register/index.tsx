@@ -208,7 +208,7 @@ export function Register() {
               disabled={isRegistering}
               inactive={isRegistering}
               onPress={handleSubmit(handleRegister)}
-              title="ENTRAR"
+              title="CADASTRAR"
             />
           </ButtonWrapper>
         </Form>

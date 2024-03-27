@@ -24,6 +24,7 @@ export const PreviousButtonText = styled.Text`
   color: ${({ theme }) => theme.colors.gray};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
+  letter-spacing: 1px;
   margin-left: 6px;
 `;
 
@@ -40,5 +41,6 @@ export const NextButtonText = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.largest}px;
+  letter-spacing: 1px;
   margin-right: 6px;
 `;

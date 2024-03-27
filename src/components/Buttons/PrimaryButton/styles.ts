@@ -16,8 +16,8 @@ export const Container = styled.TouchableOpacity<ButtonProps>`
 
 export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.light};
-  font-family: ${({ theme }) => theme.fonts.regular};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
-  font-weight: bold;
+  letter-spacing: 1px;
   text-align: center;
 `;

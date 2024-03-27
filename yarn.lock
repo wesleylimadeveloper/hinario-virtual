@@ -1216,15 +1216,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.8.0.tgz#a4a36e9cbdc6903737cd20d38033241e1b8833db"
   integrity sha512-VINS5vEYAscRl2ZUDiT3uMPlrFQupiKgHz5AA4bCH1miKBg4qtwkim1qPmJj/4WG6TreYMY111rEFsjupcOKHw==
 
-"@expo-google-fonts/roboto@^0.2.3":
+"@expo-google-fonts/raleway@^0.2.3":
   version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto/-/roboto-0.2.3.tgz#c103422a3c8f461aaada33acaf06418f6650dc19"
-  integrity sha512-PF6S//ZYWeXfpYTwvY2oEe0d5RnqwR5KMsGjuTgg6y9p/CPK/IkWL+wsbkzjfd+Jck1Q1pRlWOoe5uz42sQFRg==
-
-"@expo-google-fonts/windsong@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/windsong/-/windsong-0.2.3.tgz#1b02e394890621e9a71dbb19622535865ce87d45"
-  integrity sha512-fJPbZjZFxlYzAU4GZsmUUrRVcZPhnTVXGaVr9UiwSmgE08tegsS2hiRFvq8jM76zmrCogNNHP3C9W4ITF6x+Tg==
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/raleway/-/raleway-0.2.3.tgz#bdcad2a77b7d0f84ef7a9fd5eb993597270ad9a5"
+  integrity sha512-31D87kwraBhf59VPXEUQxRQjMCIUqNrvmWmfcyRremnwjdvSyu7LAjT6KmTZB/kAuRHJRGY4KFPQDhnPhxkZ7A==
 
 "@expo/bunyan@^4.0.0":
   version "4.0.0"

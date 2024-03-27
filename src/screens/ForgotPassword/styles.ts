@@ -12,14 +12,13 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.extraLarge}px;
-  font-weight: bold;
-  margin-bottom: 4px;
+  margin-bottom: 16px;
   text-align: center;
 `;
 
 export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
-  font-family: ${({ theme }) => theme.fonts.regular};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
   margin-bottom: 16px;
   text-align: center;

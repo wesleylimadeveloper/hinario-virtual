@@ -12,7 +12,7 @@ export function RadioButtons({ ...rest }: RadioGroupProps) {
       }}
       labelStyle={{
         color: THEME.colors.gray_light,
-        fontFamily: THEME.fonts.regular,
+        fontFamily: THEME.fonts.medium,
         fontSize: THEME.fontSize.normal,
       }}
       {...rest}

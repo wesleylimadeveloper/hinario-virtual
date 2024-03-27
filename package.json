@@ -9,8 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo-google-fonts/roboto": "^0.2.3",
-    "@expo-google-fonts/windsong": "^0.2.3",
+    "@expo-google-fonts/raleway": "^0.2.3",
     "@hookform/resolvers": "^3.3.4",
     "@react-navigation/native": "^6.1.16",
     "@react-navigation/native-stack": "^6.9.25",

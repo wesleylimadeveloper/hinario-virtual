@@ -16,11 +16,13 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.largest}px;
+  letter-spacing: 2px;
 `;
 
 export const Subtitle = styled.Text`
   color: ${({ theme }) => theme.colors.light};
-  font-family: ${({ theme }) => theme.fonts.regular};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
+  letter-spacing: 2px;
   margin-bottom: 32px;
 `;

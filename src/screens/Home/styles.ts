@@ -38,14 +38,15 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.extraLarge}px;
+  letter-spacing: 2px;
   text-align: center;
 `;
 
 export const Cursive = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.cursive};
-  font-size: ${RFValue(48)}px;
-  margin-top: -36px;
+  font-size: ${RFValue(42)}px;
+  margin-top: -24px;
   text-align: center;
 `;
 
@@ -59,8 +60,9 @@ export const MessageWrapper = styled.View`
 
 export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.gray_light};
-  font-family: ${({ theme }) => theme.fonts.regular};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
+  letter-spacing: 0.5px;
   text-align: center;
 `;
 

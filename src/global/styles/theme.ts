@@ -18,9 +18,9 @@ export default {
     success: "#0FB746",
   },
   fonts: {
-    bold: "Roboto_700Bold",
-    regular: "Roboto_400Regular",
-    cursive: "WindSong_500Medium",
+    bold: "Raleway_800ExtraBold",
+    medium: "Raleway_500Medium",
+    cursive: "Carabella_Regular",
   },
   fontSize: {
     smallest: RFValue(11),
