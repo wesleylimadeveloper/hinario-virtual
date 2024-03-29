@@ -9,7 +9,7 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MaskInput, { MaskInputProps } from "react-native-mask-input";
 
-import THEME from "../../global/styles/theme";
+import THEME from "@/global/styles/theme";
 
 interface InputProps extends MaskInputProps {
   editable?: boolean;

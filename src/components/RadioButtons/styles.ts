@@ -1,6 +1,6 @@
 import { RFValue } from "react-native-responsive-fontsize";
 
-import THEME from "../../global/styles/theme";
+import THEME from "@/global/styles/theme";
 
 export const radioButtonStyle = {
   borderSize: 1,

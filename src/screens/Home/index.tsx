@@ -4,7 +4,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
 
-import { PrimaryButton } from "../../components/Buttons/PrimaryButton";
+import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
 import { HomeNavigationProps } from "./types";
 import {
@@ -26,7 +26,7 @@ export function Home() {
 
   const navigation = useNavigation<HomeNavigationProps>();
 
-  const dioceseImage = require("../../assets/diocese.png");
+  const dioceseImage = require("@/assets/diocese.png");
 
   return (
     <>

@@ -5,9 +5,9 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import Input from "../../components/Input";
-import { PrimaryButton } from "../../components/Buttons/PrimaryButton";
-import { LinkButton } from "../../components/Buttons/LinkButton";
+import Input from "@/components/Input";
+import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
+import { LinkButton } from "@/components/Buttons/LinkButton";
 
 import { FormData, ForgotPasswordNavigationProps } from "./types";
 import {

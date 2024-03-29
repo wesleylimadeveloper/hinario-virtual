@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useTheme } from "styled-components/native";
 
-import { Home } from "../screens/Home";
-import { SelectYear } from "../screens/SelectYear";
-import { SelectCycle } from "../screens/SelectCycle";
-import { SelectCelebration } from "../screens/SelectCelebration";
+import { Home } from "@/screens/Home";
+import { SelectYear } from "@/screens/SelectYear";
+import { SelectCycle } from "@/screens/SelectCycle";
+import { SelectCelebration } from "@/screens/SelectCelebration";
 
 export function Dashboard() {
   const THEME = useTheme();

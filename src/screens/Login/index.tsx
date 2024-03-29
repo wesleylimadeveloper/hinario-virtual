@@ -6,9 +6,9 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import Input from "../../components/Input";
-import { LinkButton } from "../../components/Buttons/LinkButton";
-import { PrimaryButton } from "../../components/Buttons/PrimaryButton";
+import Input from "@/components/Input";
+import { LinkButton } from "@/components/Buttons/LinkButton";
+import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
 import { FormData, LoginNavigationProps } from "./types";
 import {

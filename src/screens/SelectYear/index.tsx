@@ -3,10 +3,10 @@ import { useTheme } from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
 import { RadioButtonProps } from "react-native-radio-buttons-group";
 
-import { Background } from "../../components/Background";
-import { RadioButtons } from "../../components/RadioButtons";
-import { radioButtonStyle } from "../../components/RadioButtons/styles";
-import { NavigationFooter } from "../../components/NavigationFooter";
+import { Background } from "@/components/Background";
+import { RadioButtons } from "@/components/RadioButtons";
+import { radioButtonStyle } from "@/components/RadioButtons/styles";
+import { NavigationFooter } from "@/components/NavigationFooter";
 
 import { SelectYearNavigationProps } from "./types";
 import { Container, Content, Title, Subtitle } from "./styles";
