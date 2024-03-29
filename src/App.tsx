@@ -8,14 +8,14 @@ import {
 } from "@expo-google-fonts/raleway";
 import { ThemeProvider } from "styled-components/native";
 
-import THEME from "./src/global/styles/theme";
-import { Routes } from "./src/routes";
+import THEME from "./global/styles/theme";
+import { Routes } from "./routes";
 
 export default function App() {
   NavigationBar.setBackgroundColorAsync(THEME.colors.primary);
 
   let [fontsLoaded, fontError] = useFonts({
-    Carabella_Regular: require("./src/assets/fonts/CarabellaRegular.ttf"),
+    Carabella_Regular: require("./assets/fonts/CarabellaRegular.ttf"),
     Raleway_500Medium,
     Raleway_800ExtraBold,
   });

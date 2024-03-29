@@ -1,8 +1,15 @@
-import { registerRootComponent } from 'expo';
+import { registerRootComponent } from "expo";
+import Reactotron from "reactotron-react-native";
 
-import App from './App';
+if (__DEV__) {
+  console.tron = Reactotron.configure({
+    host: "localhost",
+    port: 9090,
+  })
+    .useReactNative()
+    .connect();
+}
 
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
+import App from "./src/App";
+
 registerRootComponent(App);
