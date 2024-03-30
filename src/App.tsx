@@ -13,7 +13,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 import THEME from "@/global/styles/theme";
 import { AuthProvider } from "@/hooks/useAuth";
 
-import { Routes } from "./routes";
+import { Routes } from "@/routes";
 
 export default function App() {
   NavigationBar.setBackgroundColorAsync(THEME.colors.primary);
