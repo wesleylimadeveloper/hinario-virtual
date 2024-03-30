@@ -13,3 +13,15 @@ export async function getCycles(yearID: string, dioceseID: string) {
 
   return response;
 }
+
+export async function getCelebrations(
+  yearID: string,
+  cycleID: string,
+  dioceseID: string
+) {
+  const response = await api.get(
+    `masterData/celebrations?yearId=${yearID}&cycleId=${cycleID}&dioceseId=${dioceseID}`
+  );
+
+  return response;
+}

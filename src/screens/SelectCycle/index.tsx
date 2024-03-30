@@ -36,7 +36,12 @@ export function SelectCycle() {
 
   function handleNext() {
     if (selectedId) {
-      navigation.navigate("SelectCelebration", selectedId);
+      const data = {
+        yearID: params,
+        cycleID: selectedId,
+      };
+
+      navigation.navigate("SelectCelebration", data);
     } else {
       Toast.show("Você precisa selecionar uma opção.", { type: "warning" });
     }

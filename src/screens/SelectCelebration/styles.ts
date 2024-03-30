@@ -26,3 +26,9 @@ export const Subtitle = styled.Text`
   letter-spacing: 2px;
   margin-bottom: 32px;
 `;
+
+export const Text = styled.Text`
+  color: ${({ theme }) => theme.colors.light};
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${({ theme }) => theme.fontSize.normal}px;
+`;
