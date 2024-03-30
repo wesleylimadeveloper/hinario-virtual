@@ -1,4 +1,4 @@
 export type SelectYearNavigationProps = {
-  navigate(screen: string): void;
+  navigate(screen: string, data?: string): void;
   goBack(): void;
 };

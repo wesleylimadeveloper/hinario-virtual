@@ -25,7 +25,7 @@ export function SelectYear() {
 
   function handleNext() {
     if (selectedId) {
-      navigation.navigate("SelectCycle");
+      navigation.navigate("SelectCycle", selectedId);
     } else {
       Toast.show("Você precisa selecionar uma opção.", { type: "warning" });
     }
@@ -54,7 +54,7 @@ export function SelectYear() {
       }
     } catch (error) {
       Toast.show(
-        "Houve um erro ao buscar os anos litúrgicos. Por favor, verifique sua conexão, ou tente novamente mais tarde.",
+        "Houve um erro ao buscar os anos. Por favor, verifique sua conexão, ou tente novamente mais tarde.",
         { duration: 5000, type: "danger" }
       );
     } finally {
@@ -84,7 +84,7 @@ export function SelectYear() {
 
         <NavigationFooter
           onPrevious={() => navigation.goBack()}
-          onNext={() => handleNext()}
+          onNext={handleNext}
         />
       </Background>
     </Container>

@@ -3,3 +3,5 @@ export type GetYearsResponse = {
   description: string;
   createdAt: Date;
 };
+
+export type GetCyclesResponse = GetYearsResponse;

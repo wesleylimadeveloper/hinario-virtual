@@ -5,3 +5,11 @@ export async function getYears() {
 
   return response;
 }
+
+export async function getCycles(yearID: string, dioceseID: string) {
+  const response = await api.get(
+    `masterData/cycles?yearId=${yearID}&dioceseId=${dioceseID}`
+  );
+
+  return response;
+}
