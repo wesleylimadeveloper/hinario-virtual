@@ -40,7 +40,13 @@ export function SelectCelebration() {
 
   function handleNext() {
     if (selectedId) {
-      return;
+      const data = {
+        yearID,
+        cycleID,
+        celebrationID: selectedId,
+      };
+
+      navigation.navigate("Music", data);
     } else {
       Toast.show("Você precisa selecionar uma opção.", { type: "warning" });
     }
@@ -56,11 +62,11 @@ export function SelectCelebration() {
       if (data.length > 0) {
         const radioButtonsData: RadioButtonProps[] = [];
 
-        data.map((cycle) => {
+        data.map((celebration) => {
           radioButtonsData.push({
-            id: cycle.id,
-            label: cycle.description,
-            value: cycle.id,
+            id: celebration.id,
+            label: celebration.description,
+            value: celebration.id,
             ...radioButtonStyle,
           });
         });

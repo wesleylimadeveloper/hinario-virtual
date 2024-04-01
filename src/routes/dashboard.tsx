@@ -5,6 +5,7 @@ import { Home } from "@/screens/Home";
 import { SelectYear } from "@/screens/SelectYear";
 import { SelectCycle } from "@/screens/SelectCycle";
 import { SelectCelebration } from "@/screens/SelectCelebration";
+import { Music } from "@/screens/Music";
 
 export function Dashboard() {
   const THEME = useTheme();
@@ -14,6 +15,7 @@ export function Dashboard() {
   return (
     <Navigator
       screenOptions={{
+        headerShown: false,
         headerStyle: {
           backgroundColor: THEME.colors.primary,
         },
@@ -25,37 +27,15 @@ export function Dashboard() {
         },
       }}
     >
-      <Screen
-        component={Home}
-        name="Home"
-        options={{
-          headerShown: false,
-        }}
-      />
+      <Screen component={Home} name="Home" />
 
-      <Screen
-        component={SelectYear}
-        name="SelectYear"
-        options={{
-          headerShown: false,
-        }}
-      />
+      <Screen component={SelectYear} name="SelectYear" />
 
-      <Screen
-        component={SelectCycle}
-        name="SelectCycle"
-        options={{
-          headerShown: false,
-        }}
-      />
+      <Screen component={SelectCycle} name="SelectCycle" />
 
-      <Screen
-        component={SelectCelebration}
-        name="SelectCelebration"
-        options={{
-          headerShown: false,
-        }}
-      />
+      <Screen component={SelectCelebration} name="SelectCelebration" />
+
+      <Screen component={Music} name="Music" />
     </Navigator>
   );
 }

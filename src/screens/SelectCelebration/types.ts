@@ -1,5 +1,11 @@
+export type Data = {
+  yearID: string;
+  cycleID: string;
+  celebrationID: string;
+};
+
 export type SelectCelebrationNavigationProps = {
-  navigate(screen: string): void;
+  navigate(screen: string, data?: Data): void;
   goBack(): void;
 };
 
