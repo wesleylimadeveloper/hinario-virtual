@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { useTheme } from "styled-components/native";
+import { RFValue } from "react-native-responsive-fontsize";
 import { RadioButtonProps } from "react-native-radio-buttons-group";
 import { Toast } from "react-native-toast-notifications";
+import Modal from "react-native-modal";
 
 import { Background } from "@/components/Background";
+import { ModalContent } from "@/components/ModalContent";
 import { RadioButtons } from "@/components/RadioButtons";
 import { radioButtonStyle } from "@/components/RadioButtons/styles";
 import { NavigationFooter } from "@/components/NavigationFooter";
@@ -19,15 +24,18 @@ import {
   SelectCelebrationNavigationProps,
   SelectCelebrationRouteProps,
 } from "./types";
-import { Container, Content, Title, Subtitle, Text } from "./styles";
+import { Container, Content, Title, Pressable, Subtitle, Text } from "./styles";
 
 export function SelectCelebration() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [emptyResponse, setEmptyResponse] = useState(false);
   const [celebrationSelectData, setCelebrationSelectData] = useState<
     RadioButtonProps[]
   >([]);
   const [selectedId, setSelectedId] = useState<string | undefined>();
+
+  const THEME = useTheme();
 
   const navigation = useNavigation<SelectCelebrationNavigationProps>();
   const route = useRoute();
@@ -48,7 +56,12 @@ export function SelectCelebration() {
 
       navigation.navigate("Music", data);
     } else {
-      Toast.show("Você precisa selecionar uma opção.", { type: "warning" });
+      Toast.show("Você precisa selecionar uma opção.", {
+        textStyle: {
+          color: THEME.colors.dark,
+        },
+        type: "warning",
+      });
     }
   }
 
@@ -94,8 +107,30 @@ export function SelectCelebration() {
   return (
     <Container>
       <Background>
+        <Pressable onPress={() => setIsModalVisible(true)}>
+          <MaterialIcons
+            color={THEME.colors.light}
+            name="info-outline"
+            size={RFValue(24)}
+          />
+        </Pressable>
+
         <Content>
           <Title>SELECIONE A CELEBRAÇÃO</Title>
+
+          <Modal
+            animationIn={"fadeInUpBig"}
+            animationOut={"fadeOutDownBig"}
+            isVisible={isModalVisible}
+            onBackdropPress={() => setIsModalVisible(false)}
+          >
+            <ModalContent
+              onClose={() => setIsModalVisible(false)}
+              title="CELEBRAÇÃO"
+              text="Na celebração, Deus se revela para a assembleia litúrgica numa “passagem” (Páscoa) libertadora em nossas vidas. Os discípulos de hoje recobram e reavivam a chama da fé, da esperança e do amor na medida em que percebem a ação do Espírito do Ressuscitado e descobrem o sentido dos acontecimentos. A Liturgia é um memorial, no qual Deus se faz presente na comunidade e age nos ritos sagrados por meio de Cristo. Sendo assim, o canto litúrgico alcança seu sentido quando é sintonizado e acompanha harmoniosamente os ritos da celebração, sem se desviar do verdadeiro sentido de cada momento da celebração. O importante é cantar a Liturgia, e não simplesmente cantar na Liturgia, como tantas vezes acontece quando o gosto pessoal dos cantores prevalece."
+            />
+          </Modal>
+
           <Subtitle>ANO LITÚRGICO</Subtitle>
 
           <RadioButtons

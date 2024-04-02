@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: THEME.colors.danger,
+    fontFamily: THEME.fonts.medium,
     fontSize: THEME.fontSize.smallest,
     marginLeft: 8,
     marginTop: 4,

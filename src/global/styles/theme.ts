@@ -14,7 +14,7 @@ export default {
     gray_dark: "#777777",
     gray_light: "#EEEEEE",
     danger: "#D04B38",
-    warning: "#FAB032",
+    warning: "#EDB95E",
     success: "#0FB746",
   },
   fonts: {

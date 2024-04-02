@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { MaterialIcons } from "@expo/vector-icons";
+import { useTheme } from "styled-components/native";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { RFValue } from "react-native-responsive-fontsize";
 import { RadioButtonProps } from "react-native-radio-buttons-group";
 import { Toast } from "react-native-toast-notifications";
+import Modal from "react-native-modal";
 
 import { Loading } from "../Loading";
 
 import { Background } from "@/components/Background";
+import { ModalContent } from "@/components/ModalContent";
 import { RadioButtons } from "@/components/RadioButtons";
 import { radioButtonStyle } from "@/components/RadioButtons/styles";
 import { NavigationFooter } from "@/components/NavigationFooter";
@@ -16,10 +21,11 @@ import { getCycles } from "@/services/admins";
 import { GetCyclesResponse } from "@/services/admins/types";
 
 import { SelectCycleNavigationProps } from "./types";
-import { Container, Content, Title, Subtitle, Text } from "./styles";
+import { Container, Content, Title, Pressable, Subtitle, Text } from "./styles";
 
 export function SelectCycle() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [emptyResponse, setEmptyResponse] = useState(false);
   const [cycleSelectData, setCycleSelectData] = useState<RadioButtonProps[]>(
     []
@@ -28,6 +34,8 @@ export function SelectCycle() {
 
   const navigation = useNavigation<SelectCycleNavigationProps>();
   const route = useRoute();
+
+  const THEME = useTheme();
 
   const { user } = useAuth();
 
@@ -43,7 +51,12 @@ export function SelectCycle() {
 
       navigation.navigate("SelectCelebration", data);
     } else {
-      Toast.show("Você precisa selecionar uma opção.", { type: "warning" });
+      Toast.show("Você precisa selecionar uma opção.", {
+        textStyle: {
+          color: THEME.colors.dark,
+        },
+        type: "warning",
+      });
     }
   }
 
@@ -89,8 +102,30 @@ export function SelectCycle() {
   return (
     <Container>
       <Background>
+        <Pressable onPress={() => setIsModalVisible(true)}>
+          <MaterialIcons
+            color={THEME.colors.light}
+            name="info-outline"
+            size={RFValue(24)}
+          />
+        </Pressable>
+
         <Content>
           <Title>SELECIONE O CICLO</Title>
+
+          <Modal
+            animationIn={"fadeInUpBig"}
+            animationOut={"fadeOutDownBig"}
+            isVisible={isModalVisible}
+            onBackdropPress={() => setIsModalVisible(false)}
+          >
+            <ModalContent
+              onClose={() => setIsModalVisible(false)}
+              title="TEMPO LITÚRGICO"
+              text="O objetivo do tempo litúrgico é permitir que os fiéis mergulhem profundamente na história da salvação, revivendo e refletindo sobre os principais eventos da vida de Cristo e sua relevância espiritual. Cada período litúrgico tem suas próprias práticas, símbolos e cores litúrgicas para ajudar os crentes a se conectar mais profundamente com sua fé e sua jornada espiritual."
+            />
+          </Modal>
+
           <Subtitle>TEMPO LITÚRGICO</Subtitle>
 
           <RadioButtons
