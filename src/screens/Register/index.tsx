@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { TextInput } from "react-native";
-import * as ScreenOrientation from "expo-screen-orientation";
 import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -64,27 +63,9 @@ export function Register() {
     }, 2000);
   }
 
-  useEffect(() => {
-    async function changeScreenOrientation() {
-      await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.PORTRAIT
-      );
-    }
-
-    changeScreenOrientation();
-
-    return () => {
-      ScreenOrientation.unlockAsync();
-    };
-  }, []);
-
   return (
-    <Scroll
-      contentContainerStyle={{
-        minHeight: "100%",
-      }}
-    >
-      <Container>
+    <Container>
+      <Scroll>
         <Title>HINÁRIO</Title>
         <Subtitle>CADASTRO</Subtitle>
 
@@ -220,7 +201,7 @@ export function Register() {
             title="JÁ TENHO UMA CONTA"
           />
         </LinkButtonWrapper>
-      </Container>
-    </Scroll>
+      </Scroll>
+    </Container>
   );
 }

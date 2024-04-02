@@ -1,13 +1,16 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
-export const Scroll = styled.ScrollView``;
-
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.light};
   flex: 1;
-  padding: 0 ${RFValue(42)}px;
 `;
+
+export const Scroll = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    paddingHorizontal: RFValue(42),
+  },
+})``;
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.primary};

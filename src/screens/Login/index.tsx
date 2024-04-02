@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { TextInput } from "react-native";
-import * as ScreenOrientation from "expo-screen-orientation";
 import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -72,20 +71,6 @@ export function Login() {
       setIsLoggingIn(false);
     }
   }
-
-  useEffect(() => {
-    async function changeScreenOrientation() {
-      await ScreenOrientation.lockAsync(
-        ScreenOrientation.OrientationLock.PORTRAIT
-      );
-    }
-
-    changeScreenOrientation();
-
-    return () => {
-      ScreenOrientation.unlockAsync();
-    };
-  }, []);
 
   return (
     <Container>
