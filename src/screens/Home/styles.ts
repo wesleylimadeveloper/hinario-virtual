@@ -6,22 +6,6 @@ export const Container = styled.View`
   flex: 1;
 `;
 
-export const Header = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 16px ${RFValue(32)}px;
-`;
-
-export const Pressable = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.7,
-})``;
-
-export const Info = styled.View`
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-`;
-
 export const Content = styled.View`
   flex: 1;
   justify-content: center;
@@ -29,7 +13,7 @@ export const Content = styled.View`
 `;
 
 export const Logo = styled.Image`
-  height: ${RFValue(128)}px;
+  height: ${RFValue(196)}px;
   margin-bottom: 36px;
   width: 100%;
 `;

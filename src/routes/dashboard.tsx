@@ -1,41 +1,95 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Ionicons } from "@expo/vector-icons";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { RFValue } from "react-native-responsive-fontsize";
 import { useTheme } from "styled-components/native";
 
-import { Home } from "@/screens/Home";
-import { SelectYear } from "@/screens/SelectYear";
-import { SelectCycle } from "@/screens/SelectCycle";
-import { SelectCelebration } from "@/screens/SelectCelebration";
-import { Music } from "@/screens/Music";
+import { CustomDrawer } from "@/components/CustomDrawer";
+
+import { DashboardStack } from "./dashboard-stack";
+import { Repertoires } from "@/screens/Repertoires";
+import { Musics } from "@/screens/Musics";
+import { Orientations } from "@/screens/Orientations";
 
 export function Dashboard() {
   const THEME = useTheme();
 
-  const { Navigator, Screen } = createNativeStackNavigator();
+  const { Navigator, Screen } = createDrawerNavigator();
 
   return (
     <Navigator
+      drawerContent={(props) => <CustomDrawer {...props} />}
       screenOptions={{
-        headerShown: false,
+        drawerActiveBackgroundColor: THEME.colors.light,
+        drawerActiveTintColor: THEME.colors.primary,
+        drawerStyle: {
+          backgroundColor: THEME.colors.primary,
+          width: "70%",
+        },
+        drawerInactiveTintColor: THEME.colors.light,
+        drawerLabelStyle: {
+          fontFamily: THEME.fonts.medium,
+        },
+        drawerType: "slide",
+        headerRightContainerStyle: {
+          paddingRight: 24,
+        },
         headerStyle: {
           backgroundColor: THEME.colors.primary,
+          elevation: 0,
+          shadowOpacity: 0,
         },
-        headerTintColor: THEME.colors.light,
+        headerTintColor: THEME.colors.gray_light,
         headerTitleAlign: "center",
         headerTitleStyle: {
           fontFamily: THEME.fonts.bold,
-          fontSize: THEME.fontSize.larger,
+          fontSize: RFValue(16),
         },
       }}
     >
-      <Screen component={Home} name="Home" />
+      <Screen
+        component={DashboardStack}
+        name="DashboardStack"
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="play-outline" color={color} size={size} />
+          ),
+          headerTitle: "Hinário",
+          title: "Comece Já",
+        }}
+      />
 
-      <Screen component={SelectYear} name="SelectYear" />
+      <Screen
+        component={Repertoires}
+        name="Repertoires"
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="albums-outline" color={color} size={size} />
+          ),
+          title: "Repertórios",
+        }}
+      />
 
-      <Screen component={SelectCycle} name="SelectCycle" />
+      <Screen
+        component={Musics}
+        name="Musics"
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="musical-notes" color={color} size={size} />
+          ),
+          title: "Músicas",
+        }}
+      />
 
-      <Screen component={SelectCelebration} name="SelectCelebration" />
-
-      <Screen component={Music} name="Music" />
+      <Screen
+        component={Orientations}
+        name="Orientations"
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="compass-outline" color={color} size={size} />
+          ),
+          title: "Orientações",
+        }}
+      />
     </Navigator>
   );
 }
