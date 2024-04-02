@@ -4,6 +4,7 @@ import * as NavigationBar from "expo-navigation-bar";
 import {
   useFonts,
   Raleway_500Medium,
+  Raleway_500Medium_Italic,
   Raleway_800ExtraBold,
 } from "@expo-google-fonts/raleway";
 import { ThemeProvider } from "styled-components/native";
@@ -21,6 +22,7 @@ export default function App() {
   let [fontsLoaded, fontError] = useFonts({
     Carabella_Regular: require("@/assets/fonts/CarabellaRegular.ttf"),
     Raleway_500Medium,
+    Raleway_500Medium_Italic,
     Raleway_800ExtraBold,
   });
 

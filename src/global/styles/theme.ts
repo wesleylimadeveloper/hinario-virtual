@@ -20,6 +20,7 @@ export default {
   fonts: {
     bold: "Raleway_800ExtraBold",
     medium: "Raleway_500Medium",
+    medium_italic: "Raleway_500Medium_Italic",
     cursive: "Carabella_Regular",
   },
   fontSize: {
