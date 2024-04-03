@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { Sessions } from "@/services/sessions";
+import { sessions } from "@/services/sessions";
 import {
   SessionsRequest,
   SessionsResponse,
@@ -16,17 +16,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>({} as User);
   const [isAppLoading, setIsAppLoading] = useState(true);
 
-  const authTokenStorageKey = "@hinario_virtual:auth_token";
-  const userStorageKey = "@hinario_virtual:user";
+  const AUTH_TOKEN_STORAGE_KEY = "@hinario_virtual:auth_token";
+  const REFRESH_TOKEN_STORAGE_KEY = "@hinario_virtual:refresh_token";
+  const USER_STORAGE_KEY = "@hinario_virtual:user";
 
   async function loadApp() {
-    const authToken = await AsyncStorage.getItem(authTokenStorageKey);
+    const authToken = await AsyncStorage.getItem(AUTH_TOKEN_STORAGE_KEY);
+    const user = await AsyncStorage.getItem(USER_STORAGE_KEY);
 
-    if (authToken) {
-      const user = await AsyncStorage.getItem(userStorageKey);
-
-      if (user) setUser(JSON.parse(user));
-    }
+    if (authToken && user) setUser(JSON.parse(user));
 
     setIsAppLoading(false);
   }
@@ -39,14 +37,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
       password,
     };
 
-    const response = await Sessions(request);
+    const response = await sessions(request);
 
     if (response.status === 200) {
       const data: SessionsResponse = response.data;
-      const { token, user } = data;
+      const { refreshToken, token, user } = data;
 
-      await AsyncStorage.setItem(authTokenStorageKey, JSON.stringify(token));
-      await AsyncStorage.setItem(userStorageKey, JSON.stringify(user));
+      await AsyncStorage.setItem(AUTH_TOKEN_STORAGE_KEY, JSON.stringify(token));
+      await AsyncStorage.setItem(
+        REFRESH_TOKEN_STORAGE_KEY,
+        JSON.stringify(refreshToken)
+      );
+      await AsyncStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
 
       setUser(user);
     }
@@ -55,8 +57,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   async function logout() {
-    await AsyncStorage.removeItem(authTokenStorageKey);
-    await AsyncStorage.removeItem(userStorageKey);
+    await AsyncStorage.clear();
     setUser({} as User);
   }
 

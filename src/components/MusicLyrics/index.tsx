@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Constants from "expo-constants";
 import { Entypo, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { Audio } from "expo-av";
 import { useTheme } from "styled-components/native";
@@ -26,13 +25,11 @@ export function MusicLyrics(props: MusicLyricsProps) {
 
   const THEME = useTheme();
 
-  const { BASE_URL } = Constants.expoConfig.extra;
-
-  async function handlePlaySound(URL: string) {
+  async function handlePlaySound(url: string) {
     setIsPlayingSound(false);
 
     const { sound } = await Audio.Sound.createAsync({
-      uri: `${BASE_URL}files/audios/${URL}`,
+      uri: `${process.env.EXPO_PUBLIC_API_URL}files/audios/${url}`,
     });
 
     setSound(sound);

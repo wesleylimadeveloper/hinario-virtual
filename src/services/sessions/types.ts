@@ -19,7 +19,6 @@ export type User = {
   emailActive: boolean;
   lastLogin: Date;
   numberAccess: number;
-  refreshToken: string;
   isAdmin: boolean;
   createdAt: Date;
 };
