@@ -8,6 +8,7 @@ export type Music = {
   tablatura: string;
   createdAt: string;
   updatedAt?: string;
+  celebrationPartMusic?: CelebrationPartMusic[];
 };
 
 export type CelebrationPartMusic = {
@@ -16,7 +17,8 @@ export type CelebrationPartMusic = {
   musicId: string;
   required: boolean;
   order: number;
-  music: Music;
+  music?: Music;
+  celebrationPart?: CelebrationPart;
 };
 
 export type GetPartsResponse = {
@@ -47,4 +49,22 @@ export type GetPartsResponse = {
     createdAt: string;
   };
   celebrationPartMusic: CelebrationPartMusic[];
+};
+
+export type CelebrationPart = {
+  id: string;
+  dioceseId: string;
+  yearId: string;
+  cycleId: string;
+  celebrationId: string;
+  partId: string;
+};
+
+export type Pagination = {
+  total: number;
+};
+
+export type GetMusicsResponse = {
+  pagination: Pagination;
+  data: Music[];
 };
