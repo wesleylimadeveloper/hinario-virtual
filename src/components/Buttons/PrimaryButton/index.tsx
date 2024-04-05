@@ -6,8 +6,9 @@ import { ButtonProps } from "../types";
 import { Container, Text } from "./styles";
 
 export function PrimaryButton({
-  title = "",
+  title,
   color,
+  textColor,
   disable,
   inactive,
   ...rest
@@ -19,7 +20,7 @@ export function PrimaryButton({
       {inactive ? (
         <ActivityIndicator color={THEME.colors.light} />
       ) : (
-        <Text>{title}</Text>
+        <Text textColor={textColor}>{title}</Text>
       )}
     </Container>
   );

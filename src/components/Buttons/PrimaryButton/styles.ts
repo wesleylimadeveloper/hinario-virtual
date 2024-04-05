@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
 
-import { ButtonProps } from "../types";
+import { ButtonPropsStyle } from "../types";
 
-export const Container = styled.TouchableOpacity<ButtonProps>`
+export const Container = styled.TouchableOpacity<ButtonPropsStyle>`
   align-items: center;
   background-color: ${({ theme, color }) =>
     color ? color : theme.colors.primary};
@@ -14,8 +14,9 @@ export const Container = styled.TouchableOpacity<ButtonProps>`
   width: 100%;
 `;
 
-export const Text = styled.Text`
-  color: ${({ theme }) => theme.colors.light};
+export const Text = styled.Text<ButtonPropsStyle>`
+  color: ${({ textColor, theme }) =>
+    textColor ? textColor : theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
   letter-spacing: 1px;
