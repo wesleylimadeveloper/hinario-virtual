@@ -11,7 +11,6 @@ export const Container = styled.TouchableOpacity<ButtonPropsStyle>`
   border-width: 1px;
   justify-content: center;
   padding: 12px 16px;
-  width: 100%;
 `;
 
 export const Text = styled.Text<ButtonPropsStyle>`

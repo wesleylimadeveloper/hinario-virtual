@@ -1,8 +1,6 @@
 import styled from "styled-components/native";
 
-export const Container = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.7,
-})`
+export const Container = styled.View`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.primary_light};
   border-color: ${({ theme }) => theme.colors.primary_light};
@@ -40,4 +38,11 @@ export const MusicTitle = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
+`;
+
+export const Buttons = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
 `;

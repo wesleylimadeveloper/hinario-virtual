@@ -17,7 +17,7 @@ import {
   Text,
 } from "./styles";
 
-export function RepertoireLyric({
+export function RepertoireMusicLyric({
   celebrationPart,
   music,
 }: RepertoireLyricProps) {

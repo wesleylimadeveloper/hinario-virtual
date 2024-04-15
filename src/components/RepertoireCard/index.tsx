@@ -1,8 +1,7 @@
 import React from "react";
-import { Entypo } from "@expo/vector-icons";
-import { useTheme } from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
-import { RFValue } from "react-native-responsive-fontsize";
+
+import { RepertoireCardButton } from "../Buttons/RepertoireCardButton";
 
 import { RepertoireCardNavigationProps, RepertoireCardProps } from "./types";
 import {
@@ -12,6 +11,7 @@ import {
   Text,
   Musics,
   MusicTitle,
+  Buttons,
 } from "./styles";
 
 export function RepertoireCard({
@@ -19,12 +19,10 @@ export function RepertoireCard({
   repertoireCelebrationPartMusic,
   title,
 }: RepertoireCardProps) {
-  const THEME = useTheme();
-
   const navigation = useNavigation<RepertoireCardNavigationProps>();
 
   return (
-    <Container onPress={() => navigation.navigate("RepertoireDetails", { id })}>
+    <Container>
       <MusicInfo>
         <Title>{title}</Title>
         <Text>
@@ -56,13 +54,17 @@ export function RepertoireCard({
             </MusicTitle>
           ))}
         </Musics>
-      </MusicInfo>
 
-      <Entypo
-        color={THEME.colors.light}
-        name="chevron-right"
-        size={RFValue(24)}
-      />
+        <Buttons>
+          <RepertoireCardButton
+            title="Letra"
+            onPress={() => navigation.navigate("RepertoireLyric", { id })}
+          />
+          <RepertoireCardButton title="Cifra" />
+          <RepertoireCardButton title="Partitura" />
+          <RepertoireCardButton title="Slide" />
+        </Buttons>
+      </MusicInfo>
     </Container>
   );
 }

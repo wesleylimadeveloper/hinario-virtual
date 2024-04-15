@@ -5,12 +5,12 @@ import { Toast } from "react-native-toast-notifications";
 import { Loading } from "../Loading";
 
 import { NavigationHeader } from "@/components/NavigationHeader";
-import { RepertoireLyric } from "@/components/RepertoireLyric";
+import { RepertoireMusicLyric } from "@/components/RepertoireMusicLyric";
 
 import { getRepertoireByID } from "@/services/repertoires";
 import { GetRepertoiresResponse } from "@/services/repertoires/types";
 
-import { RepertoireDetailsRouteProps } from "./types";
+import { RepertoireLyricRouteProps } from "./types";
 import {
   Container,
   Content,
@@ -22,14 +22,14 @@ import {
   InfoTitle,
 } from "./styles";
 
-export function RepertoireDetails() {
+export function RepertoireLyric() {
   const [loading, setIsLoading] = useState(true);
   const [repertoire, setRepertoire] = useState({} as GetRepertoiresResponse);
 
   const route = useRoute();
 
-  const params: RepertoireDetailsRouteProps =
-    route.params as RepertoireDetailsRouteProps;
+  const params: RepertoireLyricRouteProps =
+    route.params as RepertoireLyricRouteProps;
 
   async function loadScreen() {
     setIsLoading(true);
@@ -96,7 +96,7 @@ export function RepertoireDetails() {
         data={repertoire.repertoireCelebrationPartMusic}
         keyExtractor={(item) => item.celebrationPartMusicId}
         renderItem={({ item }) => (
-          <RepertoireLyric {...item.celebrationPartMusic} />
+          <RepertoireMusicLyric {...item.celebrationPartMusic} />
         )}
       />
     </Container>
