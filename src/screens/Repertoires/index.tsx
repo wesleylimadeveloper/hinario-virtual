@@ -4,7 +4,7 @@ import { useFocusEffect } from "@react-navigation/native";
 
 import { Loading } from "../Loading";
 
-import { Repertoire } from "@/components/Repertoire";
+import { RepertoireCard } from "@/components/RepertoireCard";
 
 import { getRepertoires } from "@/services/repertoires";
 import { GetRepertoiresResponse } from "@/services/repertoires/types";
@@ -61,7 +61,7 @@ export function Repertoires() {
         data={repertoires}
         keyExtractor={(item) => item.id}
         ItemSeparatorComponent={() => <ListSeparator />}
-        renderItem={({ item }) => <Repertoire {...item} />}
+        renderItem={({ item }) => <RepertoireCard {...item} />}
       />
     </Container>
   );

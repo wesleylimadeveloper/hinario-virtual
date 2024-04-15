@@ -1,5 +1,5 @@
 import React from "react";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 
@@ -16,10 +16,10 @@ export function MusicCard({ title, author }: MusicCardProps) {
         <Subtitle>{author}</Subtitle>
       </MusicInfo>
 
-      <MaterialIcons
+      <Entypo
         color={THEME.colors.primary}
-        name="read-more"
-        size={RFValue(42)}
+        name="chevron-right"
+        size={RFValue(24)}
       />
     </Container>
   );

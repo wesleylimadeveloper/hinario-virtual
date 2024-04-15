@@ -7,22 +7,20 @@ export const Container = styled.View`
 `;
 
 export const Header = styled.View`
-  margin-bottom: 16px;
-  padding: 0 16px;
+  padding: 8px 16px;
 `;
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.largest}px;
-  margin-top: 16px;
 `;
 
 export const TitleMessage = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${({ theme }) => theme.fontSize.larger}px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 `;
 
 export const List = styled.FlatList.attrs({

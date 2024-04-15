@@ -13,10 +13,31 @@ export const Container = styled.TouchableOpacity.attrs({
   padding: 6px 12px;
 `;
 
-export const MusicInfo = styled.View``;
+export const MusicInfo = styled.View`
+  flex: 1;
+`;
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.largest}px;
+  margin-bottom: 12px;
+`;
+
+export const Text = styled.Text`
+  color: ${({ theme }) => theme.colors.light};
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${({ theme }) => theme.fontSize.normal}px;
+`;
+
+export const Musics = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 12px;
+`;
+
+export const MusicTitle = styled.Text`
+  color: ${({ theme }) => theme.colors.light};
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${({ theme }) => theme.fontSize.normal}px;
 `;
