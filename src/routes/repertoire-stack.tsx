@@ -1,8 +1,9 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useTheme } from "styled-components/native";
 
-import { RepertoireLyric } from "@/screens/RepertoireLyric";
 import { Repertoires } from "@/screens/Repertoires";
+import { RepertoireLyric } from "@/screens/RepertoireLyric";
+import { RepertoireChord } from "@/screens/RepertoireChord";
 
 export function RepertoireStack() {
   const THEME = useTheme();
@@ -27,6 +28,8 @@ export function RepertoireStack() {
       <Screen component={Repertoires} name="Repertoires" />
 
       <Screen component={RepertoireLyric} name="RepertoireLyric" />
+
+      <Screen component={RepertoireChord} name="RepertoireChord" />
     </Navigator>
   );
 }

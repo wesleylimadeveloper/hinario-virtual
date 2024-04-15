@@ -10,7 +10,7 @@ import { RepertoireMusicLyric } from "@/components/RepertoireMusicLyric";
 import { getRepertoireByID } from "@/services/repertoires";
 import { GetRepertoiresResponse } from "@/services/repertoires/types";
 
-import { RepertoireLyricRouteProps } from "./types";
+import { RepertoireChordRouteProps } from "./types";
 import {
   Container,
   Content,
@@ -22,14 +22,14 @@ import {
   InfoTitle,
 } from "./styles";
 
-export function RepertoireLyric() {
+export function RepertoireChord() {
   const [loading, setIsLoading] = useState(true);
   const [repertoire, setRepertoire] = useState({} as GetRepertoiresResponse);
 
   const route = useRoute();
 
-  const params: RepertoireLyricRouteProps =
-    route.params as RepertoireLyricRouteProps;
+  const params: RepertoireChordRouteProps =
+    route.params as RepertoireChordRouteProps;
 
   async function loadScreen() {
     setIsLoading(true);
@@ -42,7 +42,7 @@ export function RepertoireLyric() {
       setRepertoire(data);
     } catch (error) {
       Toast.show(
-        "Houve um erro ao buscar a letra. Por favor, verifique sua conexão, ou tente novamente mais tarde.",
+        "Houve um erro ao buscar a cifra. Por favor, verifique sua conexão, ou tente novamente mais tarde.",
         { duration: 5000, type: "danger" }
       );
     } finally {

@@ -60,7 +60,10 @@ export function RepertoireCard({
             title="Letra"
             onPress={() => navigation.navigate("RepertoireLyric", { id })}
           />
-          <RepertoireCardButton title="Cifra" />
+          <RepertoireCardButton
+            title="Cifra"
+            onPress={() => navigation.navigate("RepertoireChord", { id })}
+          />
           <RepertoireCardButton title="Partitura" />
           <RepertoireCardButton title="Slide" />
         </Buttons>
