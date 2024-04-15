@@ -69,6 +69,11 @@ export type GetRepertoiresResponse = {
   title: string;
   createdAt: string;
   createdBy: string;
+  createdByUser?: {
+    id: string;
+    name: string;
+    email: string;
+  };
   updatedAt: string;
   updatedBy: string;
   repertoireCelebrationPartMusic: {

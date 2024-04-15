@@ -10,7 +10,7 @@ export const Container = styled.TouchableOpacity.attrs({
   border-width: 1px;
   flex-direction: row;
   justify-content: space-between;
-  padding: 6px 12px;
+  padding: 8px 16px;
 `;
 
 export const MusicInfo = styled.View`
@@ -33,7 +33,7 @@ export const Text = styled.Text`
 export const Musics = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 12px;
+  margin: 12px 0;
 `;
 
 export const MusicTitle = styled.Text`

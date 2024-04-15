@@ -1,9 +1,10 @@
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
 import { RFValue } from "react-native-responsive-fontsize";
 
-import { RepertoireCardProps } from "./types";
+import { RepertoireCardNavigationProps, RepertoireCardProps } from "./types";
 import {
   Container,
   MusicInfo,
@@ -14,13 +15,16 @@ import {
 } from "./styles";
 
 export function RepertoireCard({
+  id,
   repertoireCelebrationPartMusic,
   title,
 }: RepertoireCardProps) {
   const THEME = useTheme();
 
+  const navigation = useNavigation<RepertoireCardNavigationProps>();
+
   return (
-    <Container>
+    <Container onPress={() => navigation.navigate("RepertoireDetails", { id })}>
       <MusicInfo>
         <Title>{title}</Title>
         <Text>

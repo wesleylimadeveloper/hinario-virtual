@@ -5,3 +5,9 @@ export async function getRepertoires() {
 
   return response;
 }
+
+export async function getRepertoireByID(id: string) {
+  const response = await api.get(`repertoires/${id}`);
+
+  return response;
+}

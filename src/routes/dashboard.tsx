@@ -6,7 +6,7 @@ import { useTheme } from "styled-components/native";
 import { CustomDrawer } from "@/components/CustomDrawer";
 
 import { DashboardStack } from "./dashboard-stack";
-import { Repertoires } from "@/screens/Repertoires";
+import { RepertoireStack } from "./repertoire-stack";
 import { Musics } from "@/screens/Musics";
 import { Orientations } from "@/screens/Orientations";
 
@@ -59,8 +59,8 @@ export function Dashboard() {
       />
 
       <Screen
-        component={Repertoires}
-        name="Repertoires"
+        component={RepertoireStack}
+        name="RepertoireStack"
         options={{
           drawerIcon: ({ color, size }) => (
             <Ionicons name="albums-outline" color={color} size={size} />

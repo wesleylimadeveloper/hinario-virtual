@@ -1,14 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useTheme } from "styled-components/native";
 
-import { Home } from "@/screens/Home";
-import { SelectYear } from "@/screens/SelectYear";
-import { SelectCycle } from "@/screens/SelectCycle";
-import { SelectCelebration } from "@/screens/SelectCelebration";
-import { Music } from "@/screens/Music";
 import { RepertoireDetails } from "@/screens/RepertoireDetails";
+import { Repertoires } from "@/screens/Repertoires";
 
-export function DashboardStack() {
+export function RepertoireStack() {
   const THEME = useTheme();
 
   const { Navigator, Screen } = createNativeStackNavigator();
@@ -28,15 +24,7 @@ export function DashboardStack() {
         },
       }}
     >
-      <Screen component={Home} name="Home" />
-
-      <Screen component={SelectYear} name="SelectYear" />
-
-      <Screen component={SelectCycle} name="SelectCycle" />
-
-      <Screen component={SelectCelebration} name="SelectCelebration" />
-
-      <Screen component={Music} name="Music" />
+      <Screen component={Repertoires} name="Repertoires" />
 
       <Screen component={RepertoireDetails} name="RepertoireDetails" />
     </Navigator>

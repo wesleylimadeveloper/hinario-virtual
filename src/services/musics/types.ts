@@ -58,6 +58,26 @@ export type CelebrationPart = {
   cycleId: string;
   celebrationId: string;
   partId: string;
+  year?: {
+    id: string;
+    description: string;
+    createdAt: string;
+  };
+  cycle?: {
+    id: string;
+    createdAt: string;
+    description: string;
+  };
+  celebration?: {
+    id: string;
+    description: string;
+    createdAt: string;
+  };
+  part?: {
+    id: string;
+    description: string;
+    createdAt: string;
+  };
 };
 
 export type Pagination = {
