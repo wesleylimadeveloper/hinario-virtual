@@ -4,6 +4,7 @@ import { useTheme } from "styled-components/native";
 import { Repertoires } from "@/screens/Repertoires";
 import { RepertoireLyric } from "@/screens/RepertoireLyric";
 import { RepertoireChord } from "@/screens/RepertoireChord";
+import { RepertoireSheet } from "@/screens/RepertoireSheet";
 
 export function RepertoireStack() {
   const THEME = useTheme();
@@ -30,6 +31,8 @@ export function RepertoireStack() {
       <Screen component={RepertoireLyric} name="RepertoireLyric" />
 
       <Screen component={RepertoireChord} name="RepertoireChord" />
+
+      <Screen component={RepertoireSheet} name="RepertoireSheet" />
     </Navigator>
   );
 }
