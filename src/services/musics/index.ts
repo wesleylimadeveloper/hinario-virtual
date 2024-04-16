@@ -18,3 +18,9 @@ export async function getMusics() {
 
   return response;
 }
+
+export async function getMusicByID(id: string) {
+  const response = await api.get(`musics/${id}`);
+
+  return response;
+}

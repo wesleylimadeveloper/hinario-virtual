@@ -88,3 +88,26 @@ export type GetMusicsResponse = {
   pagination: Pagination;
   data: Music[];
 };
+
+export type Note = {
+  key: string;
+  note: string;
+  musicId: string;
+  position: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type GetMusicByIDResponse = {
+  id: string;
+  title: string;
+  lyrics: string;
+  author: string;
+  audio: string;
+  audioLength: number;
+  tablatura: string;
+  createdAt: Date;
+  updatedAt: Date;
+  notes: Note[];
+  audioURL: string;
+};

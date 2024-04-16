@@ -7,7 +7,7 @@ import { CustomDrawer } from "@/components/CustomDrawer";
 
 import { DashboardStack } from "./dashboard-stack";
 import { RepertoireStack } from "./repertoire-stack";
-import { Musics } from "@/screens/Musics";
+import { MusicStack } from "./music-stack";
 import { Orientations } from "@/screens/Orientations";
 
 export function Dashboard() {
@@ -70,8 +70,8 @@ export function Dashboard() {
       />
 
       <Screen
-        component={Musics}
-        name="Musics"
+        component={MusicStack}
+        name="MusicStack"
         options={{
           drawerIcon: ({ color, size }) => (
             <Ionicons name="musical-notes" color={color} size={size} />
