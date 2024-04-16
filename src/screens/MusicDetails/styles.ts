@@ -1,9 +1,25 @@
+import { FlatList } from "react-native";
 import styled from "styled-components/native";
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.light};
   flex: 1;
 `;
+
+export const Carousel = styled.FlatList.attrs({
+  contentContainerStyle: {
+    gap: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+})`
+  max-height: ${RFPercentage(10)}px;
+  margin-bottom: 16px;
+  min-height: ${RFPercentage(10)}px;
+` as typeof FlatList;
 
 export const Scroll = styled.ScrollView``;
 

@@ -9,6 +9,7 @@ import { Toast } from "react-native-toast-notifications";
 import { Loading } from "../Loading";
 
 import { NavigationHeader } from "@/components/NavigationHeader";
+import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 
 import { getMusicByID } from "@/services/musics";
 import { GetMusicByIDResponse } from "@/services/musics/types";
@@ -16,6 +17,7 @@ import { GetMusicByIDResponse } from "@/services/musics/types";
 import { MusicDetailsRouteProps } from "./types";
 import {
   Container,
+  Carousel,
   Scroll,
   Content,
   Subtitle,
@@ -27,6 +29,7 @@ import {
 export function MusicDetails() {
   const [loading, setIsLoading] = useState(true);
   const [music, setMusic] = useState({} as GetMusicByIDResponse);
+  const [filterSelected, setFilterSelected] = useState(1);
   const [sound, setSound] = useState<Audio.Sound | null>(null);
   const [isPlayingSound, setIsPlayingSound] = useState(false);
 
@@ -35,6 +38,21 @@ export function MusicDetails() {
   const route = useRoute();
 
   const params: MusicDetailsRouteProps = route.params as MusicDetailsRouteProps;
+
+  const FILTERS = [
+    {
+      id: 1,
+      description: "Cifra",
+    },
+    {
+      id: 2,
+      description: "Letra",
+    },
+    {
+      id: 3,
+      description: "Tablatura",
+    },
+  ];
 
   async function loadScreen() {
     setIsLoading(true);
@@ -96,37 +114,56 @@ export function MusicDetails() {
     <Container>
       <NavigationHeader />
 
+      <Carousel
+        data={FILTERS}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <PrimaryButton
+            title={item.description}
+            onPress={() => setFilterSelected(item.id)}
+            color={filterSelected !== item.id && THEME.colors.light}
+            textColor={filterSelected !== item.id && THEME.colors.primary}
+          />
+        )}
+      />
+
       <Scroll>
         <Content>
-          <Title>{music.title}</Title>
-          <Subtitle>Autor: {music.author}</Subtitle>
+          {filterSelected === 1 || filterSelected === 2 ? (
+            <>
+              <Title>{music.title}</Title>
+              <Subtitle>Autor: {music.author}</Subtitle>
 
-          {music.audio &&
-            (isPlayingSound ? (
-              <SoundPressable onPress={() => handleStopSound()}>
-                <Ionicons
-                  style={{
-                    marginBottom: 4,
-                  }}
-                  color={THEME.colors.primary}
-                  name="stop-circle"
-                  size={RFValue(48)}
-                />
-              </SoundPressable>
-            ) : (
-              <SoundPressable onPress={() => handlePlaySound(music.audio)}>
-                <Ionicons
-                  style={{
-                    marginBottom: 4,
-                  }}
-                  color={THEME.colors.primary}
-                  name="play-circle"
-                  size={RFValue(48)}
-                />
-              </SoundPressable>
-            ))}
+              {music.audio &&
+                (isPlayingSound ? (
+                  <SoundPressable onPress={() => handleStopSound()}>
+                    <Ionicons
+                      style={{
+                        marginBottom: 4,
+                      }}
+                      color={THEME.colors.primary}
+                      name="stop-circle"
+                      size={RFValue(48)}
+                    />
+                  </SoundPressable>
+                ) : (
+                  <SoundPressable onPress={() => handlePlaySound(music.audio)}>
+                    <Ionicons
+                      style={{
+                        marginBottom: 4,
+                      }}
+                      color={THEME.colors.primary}
+                      name="play-circle"
+                      size={RFValue(48)}
+                    />
+                  </SoundPressable>
+                ))}
 
-          <Text>{music.lyrics}</Text>
+              <Text>{music.lyrics}</Text>
+            </>
+          ) : (
+            <Text>Essa música não possui tablatura.</Text>
+          )}
         </Content>
       </Scroll>
     </Container>
