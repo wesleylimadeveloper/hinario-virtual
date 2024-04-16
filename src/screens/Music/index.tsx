@@ -4,12 +4,14 @@ import { useTheme } from "styled-components/native";
 import { useRoute } from "@react-navigation/native";
 import { Toast } from "react-native-toast-notifications";
 import { RFValue } from "react-native-responsive-fontsize";
+import Modal from "react-native-modal";
 
 import { Loading } from "../Loading";
 
 import { NavigationHeader } from "@/components/NavigationHeader";
 import { MusicDetails } from "@/components/MusicDetails";
 import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
+import { CelebrationModal } from "@/components/CelebrationModal";
 
 import { useAuth } from "@/hooks/useAuth";
 
@@ -17,12 +19,21 @@ import { getParts } from "@/services/musics";
 import { GetPartsResponse } from "@/services/musics/types";
 
 import { MusicRouteProps } from "./types";
-import { ButtonWrapper, Container, EmptyComponent, List, Text } from "./styles";
+import {
+  ButtonWrapper,
+  Container,
+  IconContainer,
+  Pressable,
+  EmptyComponent,
+  List,
+  Text,
+} from "./styles";
 
 export function Music() {
   const [isLoading, setIsLoading] = useState(true);
   const [requestError, setRequestError] = useState(false);
   const [parts, setParts] = useState<GetPartsResponse[]>([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const route = useRoute();
 
@@ -111,6 +122,16 @@ export function Music() {
     <Container>
       <NavigationHeader />
 
+      <IconContainer>
+        <Pressable onPress={() => setIsModalVisible(true)}>
+          <MaterialIcons
+            color={THEME.colors.primary}
+            name="info-outline"
+            size={RFValue(24)}
+          />
+        </Pressable>
+      </IconContainer>
+
       <List
         contentContainerStyle={{
           paddingHorizontal: RFValue(16),
@@ -120,6 +141,15 @@ export function Music() {
         ListEmptyComponent={() => renderEmptyComponent()}
         renderItem={({ item }) => <MusicDetails {...item} />}
       />
+
+      <Modal
+        animationIn={"fadeInUpBig"}
+        animationOut={"fadeOutDownBig"}
+        isVisible={isModalVisible}
+        onBackdropPress={() => setIsModalVisible(false)}
+      >
+        <CelebrationModal onClose={() => setIsModalVisible(false)} />
+      </Modal>
     </Container>
   );
 }

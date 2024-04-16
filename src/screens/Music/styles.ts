@@ -1,4 +1,5 @@
 import { FlatList } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -6,6 +7,15 @@ export const Container = styled.View`
   flex: 1;
   justify-content: center;
 `;
+
+export const IconContainer = styled.View`
+  align-items: flex-end;
+  padding: 0 ${RFValue(48)}px;
+`;
+
+export const Pressable = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.8,
+})``;
 
 export const List = styled.FlatList`` as typeof FlatList;
 
