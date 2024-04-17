@@ -19,15 +19,6 @@ export const Title = styled.Text`
   letter-spacing: 2px;
 `;
 
-export const Pressable = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.8,
-})`
-  padding: 16px;
-  position: absolute;
-  right: 32px;
-  top: 32px;
-`;
-
 export const Subtitle = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.medium};

@@ -1,35 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { RadioButtonProps } from "react-native-radio-buttons-group";
 import { Toast } from "react-native-toast-notifications";
-import Modal from "react-native-modal";
+import BottomSheet from "@gorhom/bottom-sheet";
 
 import { Loading } from "../Loading";
 
 import { Background } from "@/components/Background";
-import { ModalContent } from "@/components/ModalContent";
 import { RadioButtons } from "@/components/RadioButtons";
 import { radioButtonStyle } from "@/components/RadioButtons/styles";
 import { NavigationFooter } from "@/components/NavigationFooter";
+import { PartBottomSheet } from "@/components/PartBottomSheet";
 
 import { getYears } from "@/services/admins";
 import { GetYearsResponse } from "@/services/admins/types";
 
 import { SelectYearNavigationProps } from "./types";
-import { Container, Content, Title, Pressable, Subtitle } from "./styles";
+import { Container, Content, Title, Subtitle } from "./styles";
 
 export function SelectYear() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const [yearSelectData, setYearSelectData] = useState<RadioButtonProps[]>([]);
   const [selectedId, setSelectedId] = useState<string | undefined>();
 
-  const THEME = useTheme();
+  const partBottomSheetRef = useRef<BottomSheet>(null);
 
   const navigation = useNavigation<SelectYearNavigationProps>();
+
+  const THEME = useTheme();
+
+  function handleOpenBottomSheet() {
+    partBottomSheetRef.current?.expand();
+  }
+
+  function handleCloseBottomSheet() {
+    partBottomSheetRef.current?.close();
+  }
 
   function handleNext() {
     if (selectedId) {
@@ -84,29 +93,20 @@ export function SelectYear() {
   return (
     <Container>
       <Background>
-        <Pressable onPress={() => setIsModalVisible(true)}>
-          <MaterialIcons
-            color={THEME.colors.light}
-            name="info-outline"
-            size={RFValue(24)}
-          />
-        </Pressable>
+        <MaterialIcons
+          style={{
+            position: "absolute",
+            right: 32,
+            top: 32,
+          }}
+          onPress={handleOpenBottomSheet}
+          color={THEME.colors.light}
+          name="info-outline"
+          size={RFValue(24)}
+        />
 
         <Content>
           <Title>SELECIONE O ANO</Title>
-
-          <Modal
-            animationIn={"fadeInUpBig"}
-            animationOut={"fadeOutDownBig"}
-            isVisible={isModalVisible}
-            onBackdropPress={() => setIsModalVisible(false)}
-          >
-            <ModalContent
-              onClose={() => setIsModalVisible(false)}
-              title="ANO LITÚRGICO"
-              text="O ano litúrgico é um ciclo de celebrações religiosas na Igreja Católica que reconta e comemora os principais eventos da vida de Jesus Cristo, desde o seu nascimento até a sua ressurreição e sua futura vinda como Rei. Ele começa com o tempo do Advento, aproximadamente quatro semanas antes do Natal, e termina com a Solenidade de Cristo Rei, no ano civil seguinte. O ano litúrgico é dividido em três ciclos: A, B e C, cada um dos quais se concentra em um dos Evangelhos sinópticos (Mateus, Marcos e Lucas) e lê as principais passagens das Escrituras que narram a história da salvação. Essa divisão permite que os fiéis percorram, ao longo dos anos, toda a vida de Jesus e compreendam a importância dos eventos religiosos em suas vidas. Além disso, os tempos litúrgicos ajudam os crentes a transcender o tempo cronológico e entrar no kairos, o tempo da graça de Deus, renovando a fé e a esperança na salvação."
-            />
-          </Modal>
 
           <Subtitle>ANO LITÚRGICO</Subtitle>
 
@@ -122,6 +122,13 @@ export function SelectYear() {
           onNext={handleNext}
         />
       </Background>
+
+      <PartBottomSheet
+        ref={partBottomSheetRef}
+        title="ANO LITÚRGICO"
+        text="O ano litúrgico é um ciclo de celebrações religiosas na Igreja Católica que reconta e comemora os principais eventos da vida de Jesus Cristo, desde o seu nascimento até a sua ressurreição e sua futura vinda como Rei. Ele começa com o tempo do Advento, aproximadamente quatro semanas antes do Natal, e termina com a Solenidade de Cristo Rei, no ano civil seguinte. O ano litúrgico é dividido em três ciclos: A, B e C, cada um dos quais se concentra em um dos Evangelhos sinópticos (Mateus, Marcos e Lucas) e lê as principais passagens das Escrituras que narram a história da salvação. Essa divisão permite que os fiéis percorram, ao longo dos anos, toda a vida de Jesus e compreendam a importância dos eventos religiosos em suas vidas. Além disso, os tempos litúrgicos ajudam os crentes a transcender o tempo cronológico e entrar no kairos, o tempo da graça de Deus, renovando a fé e a esperança na salvação."
+        onClose={handleCloseBottomSheet}
+      />
     </Container>
   );
 }

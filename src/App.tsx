@@ -9,6 +9,7 @@ import {
   Raleway_800ExtraBold,
 } from "@expo-google-fonts/raleway";
 import { ThemeProvider } from "styled-components/native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ToastProvider } from "react-native-toast-notifications";
 import { RFValue } from "react-native-responsive-fontsize";
 
@@ -34,26 +35,28 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={THEME}>
-      <ToastProvider
-        animationDuration={100}
-        animationType="zoom-in"
-        duration={3500}
-        placement="top"
-        textStyle={{
-          fontSize: RFValue(12),
-          fontFamily: THEME.fonts.medium,
-          textAlign: "center",
-        }}
-        dangerColor={THEME.colors.danger}
-        successColor={THEME.colors.success}
-        warningColor={THEME.colors.warning}
-      >
-        <AuthProvider>
-          <StatusBar backgroundColor={THEME.colors.primary} />
-          <Routes />
-        </AuthProvider>
-      </ToastProvider>
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider theme={THEME}>
+        <ToastProvider
+          animationDuration={100}
+          animationType="zoom-in"
+          duration={3500}
+          placement="top"
+          textStyle={{
+            fontSize: RFValue(12),
+            fontFamily: THEME.fonts.medium,
+            textAlign: "center",
+          }}
+          dangerColor={THEME.colors.danger}
+          successColor={THEME.colors.success}
+          warningColor={THEME.colors.warning}
+        >
+          <AuthProvider>
+            <StatusBar backgroundColor={THEME.colors.primary} />
+            <Routes />
+          </AuthProvider>
+        </ToastProvider>
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }
