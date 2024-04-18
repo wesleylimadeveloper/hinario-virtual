@@ -10,8 +10,8 @@ export const Button = styled.TouchableOpacity.attrs({
   activeOpacity: 0.8,
 })<MusicLyricsButtonStyleProps>`
   align-items: center;
-  background-color: ${({ mp3, theme }) =>
-    mp3 ? theme.colors.light : theme.colors.primary};
+  background-color: ${({ required, theme }) =>
+    required ? theme.colors.light : theme.colors.primary};
   border-color: ${({ theme }) => theme.colors.primary};
   border-radius: 8px;
   border-width: 1px;
@@ -21,8 +21,8 @@ export const Button = styled.TouchableOpacity.attrs({
 `;
 
 export const ButtonText = styled.Text<MusicLyricsButtonStyleProps>`
-  color: ${({ mp3, theme }) =>
-    mp3 ? theme.colors.primary : theme.colors.light};
+  color: ${({ required, theme }) =>
+    required ? theme.colors.primary : theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.normal}px;
   letter-spacing: 1px;

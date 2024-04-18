@@ -11,7 +11,7 @@ import { Background } from "@/components/Background";
 import { RadioButtons } from "@/components/RadioButtons";
 import { radioButtonStyle } from "@/components/RadioButtons/styles";
 import { NavigationFooter } from "@/components/NavigationFooter";
-import { PartBottomSheet } from "@/components/PartBottomSheet";
+import { PartInfoBottomSheet } from "@/components/PartInfoBottomSheet";
 
 import { Loading } from "../Loading";
 
@@ -34,7 +34,7 @@ export function SelectCelebration() {
   >([]);
   const [selectedId, setSelectedId] = useState<string | undefined>();
 
-  const partBottomSheetRef = useRef<BottomSheet>(null);
+  const partInfoBottomSheetRef = useRef<BottomSheet>(null);
 
   const navigation = useNavigation<SelectCelebrationNavigationProps>();
   const route = useRoute();
@@ -48,11 +48,11 @@ export function SelectCelebration() {
   const { dioceseId } = user;
 
   function handleOpenBottomSheet() {
-    partBottomSheetRef.current?.expand();
+    partInfoBottomSheetRef.current?.expand();
   }
 
   function handleCloseBottomSheet() {
-    partBottomSheetRef.current?.close();
+    partInfoBottomSheetRef.current?.close();
   }
 
   function handleNext() {
@@ -153,8 +153,8 @@ export function SelectCelebration() {
         />
       </Background>
 
-      <PartBottomSheet
-        ref={partBottomSheetRef}
+      <PartInfoBottomSheet
+        ref={partInfoBottomSheetRef}
         title="CELEBRAÇÃO"
         text="Na celebração, Deus se revela para a assembleia litúrgica numa “passagem” (Páscoa) libertadora em nossas vidas. Os discípulos de hoje recobram e reavivam a chama da fé, da esperança e do amor na medida em que percebem a ação do Espírito do Ressuscitado e descobrem o sentido dos acontecimentos. A Liturgia é um memorial, no qual Deus se faz presente na comunidade e age nos ritos sagrados por meio de Cristo. Sendo assim, o canto litúrgico alcança seu sentido quando é sintonizado e acompanha harmoniosamente os ritos da celebração, sem se desviar do verdadeiro sentido de cada momento da celebração. O importante é cantar a Liturgia, e não simplesmente cantar na Liturgia, como tantas vezes acontece quando o gosto pessoal dos cantores prevalece."
         onClose={handleCloseBottomSheet}

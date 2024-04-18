@@ -1,7 +1,7 @@
 import { CelebrationPartMusic } from "@/services/musics/types";
 
 export type MusicLyricsButtonStyleProps = {
-  mp3?: boolean;
+  required?: boolean;
 };
 
 export type MusicLyricsProps = CelebrationPartMusic;

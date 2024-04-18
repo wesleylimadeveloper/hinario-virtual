@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
 import { useRoute } from "@react-navigation/native";
 import { Toast } from "react-native-toast-notifications";
 import { RFValue } from "react-native-responsive-fontsize";
-import Modal from "react-native-modal";
+import BottomSheet from "@gorhom/bottom-sheet";
 
 import { Loading } from "../Loading";
 
 import { NavigationHeader } from "@/components/NavigationHeader";
 import { MusicDetails } from "@/components/MusicDetails";
 import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
-import { CelebrationModal } from "@/components/CelebrationModal";
+import { PartBottomSheet } from "@/components/PartBottomSheet";
 
 import { useAuth } from "@/hooks/useAuth";
 
@@ -19,21 +19,14 @@ import { getParts } from "@/services/musics";
 import { GetPartsResponse } from "@/services/musics/types";
 
 import { MusicRouteProps } from "./types";
-import {
-  ButtonWrapper,
-  Container,
-  IconContainer,
-  Pressable,
-  EmptyComponent,
-  List,
-  Text,
-} from "./styles";
+import { ButtonWrapper, Container, EmptyComponent, List, Text } from "./styles";
 
 export function Music() {
   const [isLoading, setIsLoading] = useState(true);
   const [requestError, setRequestError] = useState(false);
   const [parts, setParts] = useState<GetPartsResponse[]>([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const partBottomSheetRef = useRef<BottomSheet>(null);
 
   const route = useRoute();
 
@@ -44,6 +37,14 @@ export function Music() {
 
   const { yearID, cycleID, celebrationID } = params;
   const { dioceseId } = user;
+
+  function handleOpenBottomSheet() {
+    partBottomSheetRef.current?.expand();
+  }
+
+  function handleCloseBottomSheet() {
+    partBottomSheetRef.current?.close();
+  }
 
   async function loadScreen() {
     setIsLoading(true);
@@ -119,37 +120,37 @@ export function Music() {
   if (isLoading) return <Loading />;
 
   return (
-    <Container>
-      <NavigationHeader />
+    <>
+      <Container>
+        <NavigationHeader />
 
-      <IconContainer>
-        <Pressable onPress={() => setIsModalVisible(true)}>
-          <MaterialIcons
-            color={THEME.colors.primary}
-            name="info-outline"
-            size={RFValue(24)}
-          />
-        </Pressable>
-      </IconContainer>
+        <MaterialIcons
+          style={{
+            position: "absolute",
+            right: 32,
+            top: 32,
+          }}
+          onPress={handleOpenBottomSheet}
+          color={THEME.colors.primary}
+          name="info-outline"
+          size={RFValue(24)}
+        />
 
-      <List
-        contentContainerStyle={{
-          paddingHorizontal: RFValue(16),
-        }}
-        data={parts}
-        keyExtractor={(item) => item.id}
-        ListEmptyComponent={() => renderEmptyComponent()}
-        renderItem={({ item }) => <MusicDetails {...item} />}
+        <List
+          contentContainerStyle={{
+            paddingHorizontal: RFValue(16),
+          }}
+          data={parts}
+          keyExtractor={(item) => item.id}
+          ListEmptyComponent={() => renderEmptyComponent()}
+          renderItem={({ item }) => <MusicDetails {...item} />}
+        />
+      </Container>
+
+      <PartBottomSheet
+        ref={partBottomSheetRef}
+        onClose={handleCloseBottomSheet}
       />
-
-      <Modal
-        animationIn={"fadeInUpBig"}
-        animationOut={"fadeOutDownBig"}
-        isVisible={isModalVisible}
-        onBackdropPress={() => setIsModalVisible(false)}
-      >
-        <CelebrationModal onClose={() => setIsModalVisible(false)} />
-      </Modal>
-    </Container>
+    </>
   );
 }

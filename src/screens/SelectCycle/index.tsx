@@ -13,7 +13,7 @@ import { Background } from "@/components/Background";
 import { RadioButtons } from "@/components/RadioButtons";
 import { radioButtonStyle } from "@/components/RadioButtons/styles";
 import { NavigationFooter } from "@/components/NavigationFooter";
-import { PartBottomSheet } from "@/components/PartBottomSheet";
+import { PartInfoBottomSheet } from "@/components/PartInfoBottomSheet";
 
 import { useAuth } from "@/hooks/useAuth";
 
@@ -31,7 +31,7 @@ export function SelectCycle() {
   );
   const [selectedId, setSelectedId] = useState<string | undefined>();
 
-  const partBottomSheetRef = useRef<BottomSheet>(null);
+  const partInfoBottomSheetRef = useRef<BottomSheet>(null);
 
   const navigation = useNavigation<SelectCycleNavigationProps>();
   const route = useRoute();
@@ -44,11 +44,11 @@ export function SelectCycle() {
   const { dioceseId } = user;
 
   function handleOpenBottomSheet() {
-    partBottomSheetRef.current?.expand();
+    partInfoBottomSheetRef.current?.expand();
   }
 
   function handleCloseBottomSheet() {
-    partBottomSheetRef.current?.close();
+    partInfoBottomSheetRef.current?.close();
   }
 
   function handleNext() {
@@ -147,8 +147,8 @@ export function SelectCycle() {
         />
       </Background>
 
-      <PartBottomSheet
-        ref={partBottomSheetRef}
+      <PartInfoBottomSheet
+        ref={partInfoBottomSheetRef}
         title="TEMPO LITÚRGICO"
         text="O objetivo do tempo litúrgico é permitir que os fiéis mergulhem profundamente na história da salvação, revivendo e refletindo sobre os principais eventos da vida de Cristo e sua relevância espiritual. Cada período litúrgico tem suas próprias práticas, símbolos e cores litúrgicas para ajudar os crentes a se conectar mais profundamente com sua fé e sua jornada espiritual."
         onClose={handleCloseBottomSheet}

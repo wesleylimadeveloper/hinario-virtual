@@ -65,8 +65,8 @@ export function MusicLyrics(props: MusicLyricsProps) {
   return (
     <>
       <ButtonWrapper>
-        <Button mp3={props.music.audio !== ""} onPress={handleShowLyrics}>
-          <ButtonText mp3={props.music.audio !== ""}>
+        <Button required={!props.required} onPress={handleShowLyrics}>
+          <ButtonText required={!props.required}>
             {props.music.title}
           </ButtonText>
 

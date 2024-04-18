@@ -13,7 +13,7 @@ import { Background } from "@/components/Background";
 import { RadioButtons } from "@/components/RadioButtons";
 import { radioButtonStyle } from "@/components/RadioButtons/styles";
 import { NavigationFooter } from "@/components/NavigationFooter";
-import { PartBottomSheet } from "@/components/PartBottomSheet";
+import { PartInfoBottomSheet } from "@/components/PartInfoBottomSheet";
 
 import { getYears } from "@/services/admins";
 import { GetYearsResponse } from "@/services/admins/types";
@@ -26,18 +26,18 @@ export function SelectYear() {
   const [yearSelectData, setYearSelectData] = useState<RadioButtonProps[]>([]);
   const [selectedId, setSelectedId] = useState<string | undefined>();
 
-  const partBottomSheetRef = useRef<BottomSheet>(null);
+  const partInfoBottomSheetRef = useRef<BottomSheet>(null);
 
   const navigation = useNavigation<SelectYearNavigationProps>();
 
   const THEME = useTheme();
 
   function handleOpenBottomSheet() {
-    partBottomSheetRef.current?.expand();
+    partInfoBottomSheetRef.current?.expand();
   }
 
   function handleCloseBottomSheet() {
-    partBottomSheetRef.current?.close();
+    partInfoBottomSheetRef.current?.close();
   }
 
   function handleNext() {
@@ -123,8 +123,8 @@ export function SelectYear() {
         />
       </Background>
 
-      <PartBottomSheet
-        ref={partBottomSheetRef}
+      <PartInfoBottomSheet
+        ref={partInfoBottomSheetRef}
         title="ANO LITÚRGICO"
         text="O ano litúrgico é um ciclo de celebrações religiosas na Igreja Católica que reconta e comemora os principais eventos da vida de Jesus Cristo, desde o seu nascimento até a sua ressurreição e sua futura vinda como Rei. Ele começa com o tempo do Advento, aproximadamente quatro semanas antes do Natal, e termina com a Solenidade de Cristo Rei, no ano civil seguinte. O ano litúrgico é dividido em três ciclos: A, B e C, cada um dos quais se concentra em um dos Evangelhos sinópticos (Mateus, Marcos e Lucas) e lê as principais passagens das Escrituras que narram a história da salvação. Essa divisão permite que os fiéis percorram, ao longo dos anos, toda a vida de Jesus e compreendam a importância dos eventos religiosos em suas vidas. Além disso, os tempos litúrgicos ajudam os crentes a transcender o tempo cronológico e entrar no kairos, o tempo da graça de Deus, renovando a fé e a esperança na salvação."
         onClose={handleCloseBottomSheet}
