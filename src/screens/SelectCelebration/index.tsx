@@ -63,7 +63,7 @@ export function SelectCelebration() {
         celebrationID: selectedId,
       };
 
-      navigation.navigate("Music", data);
+      navigation.navigate("Part", data);
     } else {
       Toast.show("Você precisa selecionar uma opção.", {
         textStyle: {

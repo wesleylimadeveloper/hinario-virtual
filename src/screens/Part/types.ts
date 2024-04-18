@@ -1,4 +1,4 @@
-export type MusicRouteProps = {
+export type PartRouteProps = {
   yearID: string;
   cycleID: string;
   celebrationID: string;

@@ -18,10 +18,10 @@ import { useAuth } from "@/hooks/useAuth";
 import { getParts } from "@/services/musics";
 import { GetPartsResponse } from "@/services/musics/types";
 
-import { MusicRouteProps } from "./types";
+import { PartRouteProps } from "./types";
 import { ButtonWrapper, Container, EmptyComponent, List, Text } from "./styles";
 
-export function Music() {
+export function Part() {
   const [isLoading, setIsLoading] = useState(true);
   const [requestError, setRequestError] = useState(false);
   const [parts, setParts] = useState<GetPartsResponse[]>([]);
@@ -33,7 +33,7 @@ export function Music() {
   const THEME = useTheme();
 
   const { user } = useAuth();
-  const params = route.params as MusicRouteProps;
+  const params = route.params as PartRouteProps;
 
   const { yearID, cycleID, celebrationID } = params;
   const { dioceseId } = user;
