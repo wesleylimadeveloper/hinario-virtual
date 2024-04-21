@@ -5,6 +5,8 @@ import { useTheme } from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { Toast } from "react-native-toast-notifications";
 
+import { useRepertoire } from "@/hooks/useRepertoire";
+
 import { MusicLyricsProps } from "./types";
 import {
   Button,
@@ -13,7 +15,6 @@ import {
   Content,
   ContentHeader,
   ContentHeaderTitle,
-  Pressable,
   SoundPressable,
   Text,
 } from "./styles";
@@ -24,6 +25,8 @@ export function MusicLyrics(props: MusicLyricsProps) {
   const [isPlayingSound, setIsPlayingSound] = useState(false);
 
   const THEME = useTheme();
+
+  const { addMusicToRepertoire } = useRepertoire();
 
   async function handlePlaySound(url: string) {
     setIsPlayingSound(false);
@@ -62,6 +65,11 @@ export function MusicLyrics(props: MusicLyricsProps) {
     setShowLyrics(!showLyrics);
   }
 
+  function handleAddMusicToRepertoire() {
+    setShowLyrics(false);
+    addMusicToRepertoire(props);
+  }
+
   return (
     <>
       <ButtonWrapper>
@@ -90,14 +98,12 @@ export function MusicLyrics(props: MusicLyricsProps) {
         <Content>
           <ContentHeader>
             <ContentHeaderTitle>{props.music.title}</ContentHeaderTitle>
-
-            <Pressable>
-              <FontAwesome
-                color={THEME.colors.primary}
-                name="plus"
-                size={RFValue(16)}
-              />
-            </Pressable>
+            <FontAwesome
+              onPress={handleAddMusicToRepertoire}
+              color={THEME.colors.primary}
+              name="plus"
+              size={RFValue(16)}
+            />
           </ContentHeader>
 
           {props.music.audio &&

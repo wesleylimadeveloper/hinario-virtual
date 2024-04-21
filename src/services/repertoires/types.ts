@@ -59,6 +59,28 @@ export type CelebrationPartMusic = {
   celebrationPart: CelebrationPart;
 };
 
+export type RepertoireCelebrationPartMusic = {
+  celebrationPartMusicId: string;
+};
+
+export type CreateRepertoireRequest = {
+  title: string;
+  repertoireCelebrationPartMusic: RepertoireCelebrationPartMusic[];
+};
+
+export type CreateRepertoireResponse = {
+  status: string;
+  message: string;
+  data: {
+    id: string;
+    title: string;
+    createdAt: Date;
+    createdBy: Date;
+    updatedAt: Date;
+    updatedBy: Date;
+  };
+};
+
 export type RepertoireUser = {
   repertoireId: string;
   userId: string;

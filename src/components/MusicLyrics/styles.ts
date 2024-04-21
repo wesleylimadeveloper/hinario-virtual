@@ -50,15 +50,6 @@ export const ContentHeaderTitle = styled.Text`
   margin-right: 8px;
 `;
 
-export const Pressable = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.8,
-})`
-  align-items: center;
-  border-radius: 128px;
-  justify-content: center;
-  padding: 8px;
-`;
-
 export const SoundPressable = styled.TouchableOpacity.attrs({
   activeOpacity: 0.8,
 })``;

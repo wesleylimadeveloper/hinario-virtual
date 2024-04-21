@@ -17,7 +17,7 @@ export const Content = styled.View`
 `;
 
 export const CelebrationInfo = styled.View`
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 `;
 
 export const Text = styled.Text`
@@ -34,6 +34,11 @@ export const Title = styled.Text`
   text-align: center;
 `;
 
+export const Parts = styled.View`
+  margin-top: 16px;
+`;
+
 export const ButtonWrapper = styled.View`
+  gap: 8px;
   margin-top: 48px;
 `;

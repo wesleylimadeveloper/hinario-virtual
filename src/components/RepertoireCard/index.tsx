@@ -49,7 +49,7 @@ export function RepertoireCard({
 
         <Musics>
           {repertoireCelebrationPartMusic.map((music, index) => (
-            <MusicTitle key={music.celebrationPartMusic?.music.id}>
+            <MusicTitle key={music.celebrationPartMusicId}>
               {index + 1}. {music.celebrationPartMusic?.music.title};{" "}
             </MusicTitle>
           ))}

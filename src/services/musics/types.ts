@@ -12,6 +12,7 @@ export type Music = {
 };
 
 export type CelebrationPartMusic = {
+  partID: string;
   id: string;
   celebrationPartId: string;
   musicId: string;

@@ -14,7 +14,9 @@ import { ToastProvider } from "react-native-toast-notifications";
 import { RFValue } from "react-native-responsive-fontsize";
 
 import THEME from "@/global/styles/theme";
+
 import { AuthProvider } from "@/hooks/useAuth";
+import { RepertoireProvider } from "@/hooks/useRepertoire";
 
 import { Routes } from "@/routes";
 
@@ -52,8 +54,10 @@ export default function App() {
           warningColor={THEME.colors.warning}
         >
           <AuthProvider>
-            <StatusBar backgroundColor={THEME.colors.primary} />
-            <Routes />
+            <RepertoireProvider>
+              <StatusBar backgroundColor={THEME.colors.primary} />
+              <Routes />
+            </RepertoireProvider>
           </AuthProvider>
         </ToastProvider>
       </ThemeProvider>

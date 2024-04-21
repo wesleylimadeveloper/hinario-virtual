@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
 import { useRoute } from "@react-navigation/native";
 import { Toast } from "react-native-toast-notifications";
 import { RFValue } from "react-native-responsive-fontsize";
-import BottomSheet from "@gorhom/bottom-sheet";
 
 import { Loading } from "../Loading";
 
@@ -14,6 +13,7 @@ import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 import { PartBottomSheet } from "@/components/PartBottomSheet";
 
 import { useAuth } from "@/hooks/useAuth";
+import { useRepertoire } from "@/hooks/useRepertoire";
 
 import { getParts } from "@/services/musics";
 import { GetPartsResponse } from "@/services/musics/types";
@@ -26,13 +26,14 @@ export function Part() {
   const [requestError, setRequestError] = useState(false);
   const [parts, setParts] = useState<GetPartsResponse[]>([]);
 
-  const partBottomSheetRef = useRef<BottomSheet>(null);
-
   const route = useRoute();
 
   const THEME = useTheme();
 
   const { user } = useAuth();
+
+  const { resetStates, partBottomSheetRef } = useRepertoire();
+
   const params = route.params as PartRouteProps;
 
   const { yearID, cycleID, celebrationID } = params;
@@ -115,6 +116,7 @@ export function Part() {
 
   useEffect(() => {
     loadScreen();
+    resetStates();
   }, []);
 
   if (isLoading) return <Loading />;
@@ -149,6 +151,7 @@ export function Part() {
 
       <PartBottomSheet
         ref={partBottomSheetRef}
+        parts={parts}
         onClose={handleCloseBottomSheet}
       />
     </>
