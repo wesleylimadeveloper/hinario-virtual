@@ -58,6 +58,7 @@ export function Musics() {
       const data: GetMusicsResponse = response.data;
 
       setMusics(data.data);
+      setMusicsList(data.data);
     } catch (error) {
       setMusics([]);
 
