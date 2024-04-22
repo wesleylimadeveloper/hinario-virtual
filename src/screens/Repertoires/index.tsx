@@ -41,14 +41,14 @@ export function Repertoires() {
 
     const listCopy = [...repertoires];
 
-    const listFiltered = listCopy.filter((item) =>
+    const filteredList = listCopy.filter((item) =>
       item.title.toLowerCase().includes(value.toLowerCase())
     );
 
-    if (listFiltered.length === 0 && value.trim())
+    if (filteredList.length === 0 && value.trim())
       setListEmptyMessage("Nenhum resultado encontrado para esta pesquisa.");
 
-    setRepertoiresList(listFiltered);
+    setRepertoiresList(filteredList);
   }
 
   async function loadScreen() {
@@ -97,8 +97,8 @@ export function Repertoires() {
       <List
         data={repertoiresList}
         keyExtractor={(item) => item.id}
-        ListEmptyComponent={() => <Text>{listEmptyMessage}</Text>}
         ItemSeparatorComponent={() => <ListSeparator />}
+        ListEmptyComponent={() => <Text>{listEmptyMessage}</Text>}
         renderItem={({ item }) => <RepertoireCard {...item} />}
       />
     </Container>

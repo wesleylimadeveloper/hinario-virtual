@@ -4,6 +4,7 @@ import { useFocusEffect } from "@react-navigation/native";
 
 import { Loading } from "../Loading";
 
+import Input from "@/components/Input";
 import { MusicCard } from "@/components/MusicCard";
 
 import { getMusics } from "@/services/musics";
@@ -17,11 +18,37 @@ import {
   Subtitle,
   List,
   ListSeparator,
+  Text,
 } from "./styles";
 
 export function Musics() {
   const [isLoading, setIsLoading] = useState(true);
   const [musics, setMusics] = useState<Music[]>([]);
+  const [musicsList, setMusicsList] = useState<Music[]>([]);
+  const [searchFieldValue, setSearchFieldValue] = useState("");
+  const [listEmptyMessage, setListEmptyMessage] = useState(
+    "Nenhuma música cadastrada no momento."
+  );
+
+  function handleSearchMusic(value: string) {
+    if (!value.trim()) {
+      setListEmptyMessage("Nenhuma música cadastrada no momento.");
+      setMusicsList(musics);
+    }
+
+    setSearchFieldValue(value);
+
+    const listCopy = [...musics];
+
+    const filteredList = listCopy.filter((item) =>
+      item.title.toLowerCase().includes(value.toLowerCase())
+    );
+
+    if (filteredList.length === 0 && value.trim())
+      setListEmptyMessage("Nenhum resultado encontrado para esta pesquisa.");
+
+    setMusicsList(filteredList);
+  }
 
   async function loadScreen() {
     setIsLoading(true);
@@ -57,13 +84,21 @@ export function Musics() {
         <Title>Músicas</Title>
         <TitleMessage>TODAS AS MÚSICAS DE NOSSO REPERTÓRIO</TitleMessage>
 
+        <Input
+          onChangeText={handleSearchMusic}
+          placeholder="Pesquisar"
+          searchable
+          value={searchFieldValue}
+        />
+
         <Subtitle>Galeria de Músicas</Subtitle>
       </Header>
 
       <List
-        data={musics}
+        data={musicsList}
         keyExtractor={(item) => item.id}
         ItemSeparatorComponent={() => <ListSeparator />}
+        ListEmptyComponent={() => <Text>{listEmptyMessage}</Text>}
         renderItem={({ item }) => <MusicCard {...item} />}
       />
     </Container>

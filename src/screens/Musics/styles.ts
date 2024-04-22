@@ -29,14 +29,22 @@ export const Subtitle = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${({ theme }) => theme.fontSize.largest}px;
+  margin-top: 8px;
 `;
 
 export const List = styled.FlatList.attrs({
   contentContainerStyle: {
     paddingHorizontal: 16,
+    paddingBottom: 32,
   },
 })`` as typeof FlatList;
 
 export const ListSeparator = styled.View`
   margin: 8px 0;
+`;
+
+export const Text = styled.Text`
+  color: ${({ theme }) => theme.colors.primary};
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${({ theme }) => theme.fontSize.normal}px;
 `;

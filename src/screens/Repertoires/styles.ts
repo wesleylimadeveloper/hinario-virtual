@@ -26,6 +26,7 @@ export const TitleMessage = styled.Text`
 export const List = styled.FlatList.attrs({
   contentContainerStyle: {
     paddingHorizontal: 16,
+    paddingBottom: 32,
   },
 })`` as typeof FlatList;
 
