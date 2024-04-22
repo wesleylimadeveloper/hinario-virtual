@@ -30,15 +30,3 @@ export const UserName = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.larger}px;
 `;
-
-export const DrawerFooter = styled.View`
-  border-top-color: ${({ theme }) => theme.colors.light};
-  border-top-width: 0.2px;
-  padding: 8px 32px;
-`;
-
-export const Version = styled.Text`
-  color: ${({ theme }) => theme.colors.light};
-  font-family: ${({ theme }) => theme.fonts.medium};
-  font-size: ${({ theme }) => theme.fontSize.smaller}px;
-`;

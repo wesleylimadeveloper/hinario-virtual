@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Constants from "expo-constants";
 import { FontAwesome } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
 import {
@@ -22,8 +21,6 @@ import {
   MessageWrapper,
   Greeting,
   UserName,
-  DrawerFooter,
-  Version,
 } from "./styles";
 
 export function CustomDrawer(props: DrawerContentComponentProps) {
@@ -35,14 +32,10 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
   const { logout, user } = useAuth();
   const { name } = user;
 
-  const { manifest2 } = Constants;
-
   async function handleLogout() {
     navigation.navigate("Home");
     await logout();
   }
-
-  const versionCode = manifest2.extra.expoClient.version;
 
   return (
     <Container>
@@ -85,10 +78,6 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
           />
         )}
       </DrawerContentScrollView>
-
-      <DrawerFooter>
-        <Version>Versão {versionCode}</Version>
-      </DrawerFooter>
     </Container>
   );
 }
