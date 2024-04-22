@@ -4,6 +4,7 @@ import { useFocusEffect } from "@react-navigation/native";
 
 import { Loading } from "../Loading";
 
+import Input from "@/components/Input";
 import { RepertoireCard } from "@/components/RepertoireCard";
 
 import { getRepertoires } from "@/services/repertoires";
@@ -16,11 +17,39 @@ import {
   TitleMessage,
   List,
   ListSeparator,
+  Text,
 } from "./styles";
 
 export function Repertoires() {
   const [isLoading, setIsLoading] = useState(true);
   const [repertoires, setRepertoires] = useState<GetRepertoiresResponse[]>([]);
+  const [repertoiresList, setRepertoiresList] = useState<
+    GetRepertoiresResponse[]
+  >([]);
+  const [searchFieldValue, setSearchFieldValue] = useState("");
+  const [listEmptyMessage, setListEmptyMessage] = useState(
+    "Nenhum repertório cadastrado no momento."
+  );
+
+  function handleSearchRepertoire(value: string) {
+    if (!value.trim()) {
+      setListEmptyMessage("Nenhum repertório cadastrado no momento.");
+      setRepertoiresList(repertoires);
+    }
+
+    setSearchFieldValue(value);
+
+    const listCopy = [...repertoires];
+
+    const listFiltered = listCopy.filter((item) =>
+      item.title.toLowerCase().includes(value.toLowerCase())
+    );
+
+    if (listFiltered.length === 0 && value.trim())
+      setListEmptyMessage("Nenhum resultado encontrado para esta pesquisa.");
+
+    setRepertoiresList(listFiltered);
+  }
 
   async function loadScreen() {
     setIsLoading(true);
@@ -30,6 +59,7 @@ export function Repertoires() {
       const data: GetRepertoiresResponse[] = response.data;
 
       setRepertoires(data);
+      setRepertoiresList(data);
     } catch (error) {
       setRepertoires([]);
 
@@ -55,11 +85,19 @@ export function Repertoires() {
       <Header>
         <Title>Repertórios</Title>
         <TitleMessage>TODAS AS SUAS CELEBRAÇÕES</TitleMessage>
+
+        <Input
+          onChangeText={handleSearchRepertoire}
+          placeholder="Pesquisar"
+          searchable
+          value={searchFieldValue}
+        />
       </Header>
 
       <List
-        data={repertoires}
+        data={repertoiresList}
         keyExtractor={(item) => item.id}
+        ListEmptyComponent={() => <Text>{listEmptyMessage}</Text>}
         ItemSeparatorComponent={() => <ListSeparator />}
         renderItem={({ item }) => <RepertoireCard {...item} />}
       />

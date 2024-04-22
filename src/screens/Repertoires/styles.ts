@@ -32,3 +32,9 @@ export const List = styled.FlatList.attrs({
 export const ListSeparator = styled.View`
   margin: 8px 0;
 `;
+
+export const Text = styled.Text`
+  color: ${({ theme }) => theme.colors.light};
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${({ theme }) => theme.fontSize.normal}px;
+`;

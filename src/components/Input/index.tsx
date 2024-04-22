@@ -6,19 +6,20 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import MaskInput, { MaskInputProps } from "react-native-mask-input";
 
 import THEME from "@/global/styles/theme";
 
 interface InputProps extends MaskInputProps {
   editable?: boolean;
+  searchable?: boolean;
   secureTextEntry?: boolean;
   error?: string;
 }
 
 const InputForwardRef = forwardRef<TextInput, InputProps>(function Input(
-  { editable = true, secureTextEntry, error, ...rest },
+  { editable = true, searchable, secureTextEntry, error, ...rest },
   ref
 ) {
   const [isFocused, setIsFocused] = useState(false);
@@ -39,11 +40,20 @@ const InputForwardRef = forwardRef<TextInput, InputProps>(function Input(
           },
         ]}
       >
+        {searchable && (
+          <FontAwesome
+            name="search"
+            size={18}
+            color={editable ? THEME.colors.primary : THEME.colors.gray}
+          />
+        )}
+
         <MaskInput
           style={[
             styles.field,
             {
               color: editable ? THEME.colors.primary : THEME.colors.gray,
+              paddingLeft: searchable ? 8 : 0,
             },
           ]}
           editable={editable}
