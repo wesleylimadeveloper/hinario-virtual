@@ -8,6 +8,12 @@ export async function createRepertoire(request: CreateRepertoireRequest) {
   return response;
 }
 
+export async function deleteRepertoire(id: string) {
+  const response = await api.delete(`repertoires/${id}`);
+
+  return response;
+}
+
 export async function getRepertoires() {
   const response = await api.get("repertoires");
 

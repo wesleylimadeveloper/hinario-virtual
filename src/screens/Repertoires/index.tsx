@@ -99,7 +99,9 @@ export function Repertoires() {
         keyExtractor={(item) => item.id}
         ItemSeparatorComponent={() => <ListSeparator />}
         ListEmptyComponent={() => <Text>{listEmptyMessage}</Text>}
-        renderItem={({ item }) => <RepertoireCard {...item} />}
+        renderItem={({ item }) => (
+          <RepertoireCard onRefresh={loadScreen} {...item} />
+        )}
       />
     </Container>
   );

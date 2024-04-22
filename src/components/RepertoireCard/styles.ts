@@ -15,11 +15,17 @@ export const MusicInfo = styled.View`
   flex: 1;
 `;
 
+export const Header = styled.View`
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 12px;
+`;
+
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.light};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.largest}px;
-  margin-bottom: 12px;
 `;
 
 export const Text = styled.Text`

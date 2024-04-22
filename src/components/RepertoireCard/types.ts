@@ -8,4 +8,6 @@ export type RepertoireCardNavigationProps = {
   navigate(screen: string, data: Data): void;
 };
 
-export type RepertoireCardProps = GetRepertoiresResponse;
+export type RepertoireCardProps = GetRepertoiresResponse & {
+  onRefresh(): Promise<void>;
+};
