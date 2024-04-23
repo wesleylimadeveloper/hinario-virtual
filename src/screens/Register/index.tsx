@@ -4,10 +4,14 @@ import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { Toast } from "react-native-toast-notifications";
 
 import Input from "@/components/Input";
 import { PrimaryButton } from "@/components/Buttons/PrimaryButton";
 import { LinkButton } from "@/components/Buttons/LinkButton";
+
+import { createUser } from "@/services/users";
+import { CreateUserRequest } from "@/services/users/types";
 
 import { FormData, RegisterNavigationProps } from "./types";
 import {
@@ -58,9 +62,52 @@ export function Register() {
   async function handleRegister(formData: FormData) {
     setIsRegistering(true);
 
-    setTimeout(() => {
+    const { email, fullName, parishCode, password } = formData;
+
+    const request: CreateUserRequest = {
+      email,
+      name: fullName,
+      parish: parishCode,
+      phone: parishCode,
+      password,
+    };
+
+    try {
+      const response = await createUser(request);
+
+      if (response.status === 200) {
+        Toast.show("Usuário cadastrado com sucesso!", {
+          type: "success",
+        });
+
+        return navigation.navigate("Login");
+      }
+
       setIsRegistering(false);
-    }, 2000);
+    } catch (error) {
+      if (error.response.data.message === "Email address already used.") {
+        setIsRegistering(false);
+
+        return Toast.show("Este e-mail já está cadastrado.", {
+          type: "warning",
+        });
+      }
+
+      if (error.response.data.message === "Parish code not exists.") {
+        setIsRegistering(false);
+
+        return Toast.show("Código da paróquia inválido.", {
+          type: "warning",
+        });
+      }
+
+      setIsRegistering(false);
+
+      Toast.show(
+        "Houve um erro ao realizar o cadastro. Por favor, verifique sua conexão, ou tente novamente mais tarde.",
+        { duration: 5000, type: "danger" }
+      );
+    }
   }
 
   return (
@@ -169,7 +216,7 @@ export function Register() {
               render={({ field: { onChange, value } }) => (
                 <>
                   <Input
-                    autoCapitalize="none"
+                    autoCapitalize="characters"
                     autoCorrect={false}
                     editable={!isRegistering}
                     error={errors?.parishCode?.message}
