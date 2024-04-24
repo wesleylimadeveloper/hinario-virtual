@@ -35,16 +35,19 @@ export const ContentHeader = styled.View`
   padding: 4px;
 `;
 
+export const Audio = styled.View`
+  align-items: center;
+  flex-direction: row;
+  gap: 2px;
+  margin: 8px 0;
+`;
+
 export const ContentHeaderTitle = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${({ theme }) => theme.fontSize.larger}px;
   margin-right: 8px;
 `;
-
-export const SoundPressable = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.8,
-})``;
 
 export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.primary};

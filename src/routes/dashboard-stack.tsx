@@ -6,6 +6,7 @@ import { SelectYear } from "@/screens/SelectYear";
 import { SelectCycle } from "@/screens/SelectCycle";
 import { SelectCelebration } from "@/screens/SelectCelebration";
 import { Part } from "@/screens/Part";
+import { MusicPlayer } from "@/screens/MusicPlayer";
 
 export function DashboardStack() {
   const THEME = useTheme();
@@ -36,6 +37,8 @@ export function DashboardStack() {
       <Screen component={SelectCelebration} name="SelectCelebration" />
 
       <Screen component={Part} name="Part" />
+
+      <Screen component={MusicPlayer} name="MusicPlayer" />
     </Navigator>
   );
 }

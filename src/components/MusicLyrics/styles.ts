@@ -50,9 +50,12 @@ export const ContentHeaderTitle = styled.Text`
   margin-right: 8px;
 `;
 
-export const SoundPressable = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.8,
-})``;
+export const Audio = styled.View`
+  align-items: center;
+  flex-direction: row;
+  gap: 2px;
+  margin: 8px 0;
+`;
 
 export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.primary};

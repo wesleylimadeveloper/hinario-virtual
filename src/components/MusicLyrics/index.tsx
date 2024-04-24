@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Entypo, FontAwesome, Ionicons } from "@expo/vector-icons";
-import { Audio } from "expo-av";
+import { useNavigation } from "@react-navigation/native";
 import { useTheme } from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { Toast } from "react-native-toast-notifications";
 
 import { useRepertoire } from "@/hooks/useRepertoire";
 
-import { MusicLyricsProps } from "./types";
+import { MusicLyricsNavigationProps, MusicLyricsProps } from "./types";
 import {
   Button,
   ButtonText,
@@ -15,53 +14,20 @@ import {
   Content,
   ContentHeader,
   ContentHeaderTitle,
-  SoundPressable,
+  Audio,
   Text,
 } from "./styles";
 
 export function MusicLyrics(props: MusicLyricsProps) {
   const [showLyrics, setShowLyrics] = useState(false);
-  const [sound, setSound] = useState<Audio.Sound | null>(null);
-  const [isPlayingSound, setIsPlayingSound] = useState(false);
+
+  const navigation = useNavigation<MusicLyricsNavigationProps>();
 
   const THEME = useTheme();
 
   const { addMusicToRepertoire } = useRepertoire();
 
-  async function handlePlaySound(url: string) {
-    setIsPlayingSound(false);
-
-    const { sound } = await Audio.Sound.createAsync({
-      uri: `${process.env.EXPO_PUBLIC_API_URL}files/audios/${url}`,
-    });
-
-    setSound(sound);
-
-    try {
-      await sound.playAsync();
-      setIsPlayingSound(true);
-    } catch (error) {
-      Toast.show("Erro ao reproduzir o áudio.");
-    }
-  }
-
-  async function handleStopSound() {
-    if (sound) {
-      try {
-        await sound.stopAsync();
-        await sound.unloadAsync();
-        setIsPlayingSound(false);
-      } catch (error) {
-        Toast.show("Erro ao parar o áudio.");
-      }
-    }
-  }
-
   async function handleShowLyrics() {
-    if (isPlayingSound) {
-      await handleStopSound();
-    }
-
     setShowLyrics(!showLyrics);
   }
 
@@ -106,32 +72,19 @@ export function MusicLyrics(props: MusicLyricsProps) {
             />
           </ContentHeader>
 
-          {props.music.audio &&
-            (isPlayingSound ? (
-              <SoundPressable onPress={() => handleStopSound()}>
-                <Ionicons
-                  style={{
-                    marginBottom: 4,
-                  }}
-                  color={THEME.colors.primary}
-                  name="stop-circle"
-                  size={RFValue(48)}
-                />
-              </SoundPressable>
-            ) : (
-              <SoundPressable
-                onPress={() => handlePlaySound(props.music.audio)}
-              >
-                <Ionicons
-                  style={{
-                    marginBottom: 4,
-                  }}
-                  color={THEME.colors.primary}
-                  name="play-circle"
-                  size={RFValue(48)}
-                />
-              </SoundPressable>
-            ))}
+          {props.music.audio && (
+            <Audio>
+              <Text>Ouvir</Text>
+              <Ionicons
+                onPress={() =>
+                  navigation.navigate("MusicPlayer", { music: props.music })
+                }
+                color={THEME.colors.primary}
+                name="play-circle"
+                size={RFValue(36)}
+              />
+            </Audio>
+          )}
 
           <Text>{props.music.lyrics}</Text>
         </Content>

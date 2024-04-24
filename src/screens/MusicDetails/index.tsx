@@ -1,9 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 import { useTheme } from "styled-components/native";
-import { Audio } from "expo-av";
-import { Ionicons } from "@expo/vector-icons";
-import { RFValue } from "react-native-responsive-fontsize";
 import { Toast } from "react-native-toast-notifications";
 
 import { Loading } from "../Loading";
@@ -20,22 +17,19 @@ import {
   Carousel,
   Scroll,
   Content,
+  Title,
   Subtitle,
   Text,
-  Title,
-  SoundPressable,
 } from "./styles";
 
 export function MusicDetails() {
   const [loading, setIsLoading] = useState(true);
   const [music, setMusic] = useState({} as GetMusicByIDResponse);
   const [filterSelected, setFilterSelected] = useState(1);
-  const [sound, setSound] = useState<Audio.Sound | null>(null);
-  const [isPlayingSound, setIsPlayingSound] = useState(false);
-
-  const THEME = useTheme();
 
   const route = useRoute();
+
+  const THEME = useTheme();
 
   const params: MusicDetailsRouteProps = route.params as MusicDetailsRouteProps;
 
@@ -73,35 +67,6 @@ export function MusicDetails() {
     }
   }
 
-  async function handlePlaySound(url: string) {
-    setIsPlayingSound(false);
-
-    const { sound } = await Audio.Sound.createAsync({
-      uri: `${process.env.EXPO_PUBLIC_API_URL}files/audios/${url}`,
-    });
-
-    setSound(sound);
-
-    try {
-      await sound.playAsync();
-      setIsPlayingSound(true);
-    } catch (error) {
-      Toast.show("Erro ao reproduzir o áudio.");
-    }
-  }
-
-  async function handleStopSound() {
-    if (sound) {
-      try {
-        await sound.stopAsync();
-        await sound.unloadAsync();
-        setIsPlayingSound(false);
-      } catch (error) {
-        Toast.show("Erro ao parar o áudio.");
-      }
-    }
-  }
-
   useFocusEffect(
     useCallback(() => {
       loadScreen();
@@ -133,31 +98,6 @@ export function MusicDetails() {
             <>
               <Title>{music.title}</Title>
               <Subtitle>Autor: {music.author}</Subtitle>
-
-              {music.audio &&
-                (isPlayingSound ? (
-                  <SoundPressable onPress={() => handleStopSound()}>
-                    <Ionicons
-                      style={{
-                        marginBottom: 4,
-                      }}
-                      color={THEME.colors.primary}
-                      name="stop-circle"
-                      size={RFValue(48)}
-                    />
-                  </SoundPressable>
-                ) : (
-                  <SoundPressable onPress={() => handlePlaySound(music.audio)}>
-                    <Ionicons
-                      style={{
-                        marginBottom: 4,
-                      }}
-                      color={THEME.colors.primary}
-                      name="play-circle"
-                      size={RFValue(48)}
-                    />
-                  </SoundPressable>
-                ))}
 
               <Text>{music.lyrics}</Text>
             </>

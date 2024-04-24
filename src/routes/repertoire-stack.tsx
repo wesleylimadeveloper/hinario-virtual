@@ -3,6 +3,7 @@ import { useTheme } from "styled-components/native";
 
 import { Repertoires } from "@/screens/Repertoires";
 import { RepertoireLyric } from "@/screens/RepertoireLyric";
+import { MusicPlayer } from "@/screens/MusicPlayer";
 import { RepertoireChord } from "@/screens/RepertoireChord";
 import { RepertoireSheet } from "@/screens/RepertoireSheet";
 
@@ -29,6 +30,8 @@ export function RepertoireStack() {
       <Screen component={Repertoires} name="Repertoires" />
 
       <Screen component={RepertoireLyric} name="RepertoireLyric" />
+
+      <Screen component={MusicPlayer} name="MusicPlayer" />
 
       <Screen component={RepertoireChord} name="RepertoireChord" />
 
