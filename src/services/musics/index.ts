@@ -14,7 +14,7 @@ export async function getParts(
 }
 
 export async function getMusics() {
-  const response = await api.get(`musics?page=1&limit=10&title=`);
+  const response = await api.get(`musics?page=1&limit=10000&title=`);
 
   return response;
 }

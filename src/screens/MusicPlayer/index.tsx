@@ -5,6 +5,9 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { useTheme } from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import Slider from "@react-native-community/slider";
+import { Toast } from "react-native-toast-notifications";
+
+import { Loading } from "../Loading";
 
 import { NavigationHeader } from "@/components/NavigationHeader";
 
@@ -20,6 +23,7 @@ import {
 } from "./styles";
 
 export function MusicPlayer() {
+  const [isLoading, setIsLoading] = useState(true);
   const [playbackObj, setPlaybackObj] = useState<Audio.Sound | null>(null);
   const [soundObj, setSoundObj] = useState<AVPlaybackStatus | null>(null);
   const [playbackDuration, setPlaybackDuration] = useState<number | null>(null);
@@ -90,24 +94,37 @@ export function MusicPlayer() {
   }
 
   async function loadScreen() {
+    setIsLoading(true);
     const playbackObj = new Audio.Sound();
 
-    const status = await playbackObj.loadAsync(
-      {
-        uri: `${process.env.EXPO_PUBLIC_API_URL}files/audios/${audio}`,
-      },
-      { shouldPlay: true }
-    );
+    try {
+      const status = await playbackObj.loadAsync(
+        {
+          uri: `${process.env.EXPO_PUBLIC_API_URL}files/audios/${audio}`,
+        },
+        { shouldPlay: true }
+      );
 
-    setPlaybackObj(playbackObj);
-    setSoundObj(status);
-
-    return playbackObj.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
+      if (status) {
+        setPlaybackObj(playbackObj);
+        setSoundObj(status);
+        setIsLoading(false);
+        return playbackObj.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
+      }
+    } catch (error) {
+      Toast.show("Não foi possível reproduzir o áudio.", {
+        duration: 5000,
+        type: "danger",
+      });
+      navigation.goBack();
+    }
   }
 
   useEffect(() => {
     loadScreen();
   }, []);
+
+  if (isLoading) return <Loading />;
 
   return (
     <Container>

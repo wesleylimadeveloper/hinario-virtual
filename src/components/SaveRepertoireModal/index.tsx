@@ -1,9 +1,6 @@
 import React from "react";
 import { ActivityIndicator } from "react-native";
 import { useTheme } from "styled-components/native";
-import { Controller, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 
 import { PrimaryButton } from "../Buttons/PrimaryButton";
 
@@ -30,7 +27,7 @@ export function SaveRepertoireModal({
         autoCapitalize="words"
         autoCorrect={false}
         autoFocus
-        error={!repertoireTitle.trim() ? "Título obrigatório" : null}
+        error={!repertoireTitle.trim() ? "Título obrigatório." : null}
         editable={!isSavingRepertoire}
         onChangeText={setTitle}
         onSubmitEditing={onSaveRepertoire}
